@@ -19,10 +19,20 @@ public class CameraWark : MonoBehaviour
     public float z = 0;
     public bool flagDown = false;
     public bool flagUp = false;
+
+
+    //special
+    public bool backMode = false;
+    [SerializeField] public float backY;
+    [SerializeField] public float backX;
+    [SerializeField] public float backZ;
+    public Vector3 savePosition;
+    public Quaternion  saveRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        savePosition = cameraTransform.position;
     }
 
     // Update is called once per frame
@@ -33,24 +43,70 @@ public class CameraWark : MonoBehaviour
 
     public void TurnRight()
     {
+        cameraTransform.position = savePosition;
         y = 90;
         cameraTransform.Rotate(new Vector3(x,y,z));
         x = 0;
         y = 0;
         z = 0;
+        //ここから
+        saveRotation = cameraTransform.rotation;
+        if (backMode)
+        {
+            if (saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == 0)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+            }
+            else if (saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == -1 || saveRotation.w == 1)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+            }
+        }
+
     }
 
     public void TurnLeft()
     {
+        cameraTransform.position = savePosition;
         y = -90;
         cameraTransform.Rotate(new Vector3(x, y, z));
         x = 0;
         y = 0;
         z = 0;
+        //ここから
+        saveRotation = cameraTransform.rotation;
+        if (backMode)
+        {
+            if (saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == 0)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+            }
+            else if (saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == -1 || saveRotation.w == 1)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+            }
+        }
     }
 
     public void TurnUp()
     {
+        cameraTransform.position = savePosition;
         if (!flagUp&&!flagDown)
         {
             x = -90;
@@ -62,6 +118,10 @@ public class CameraWark : MonoBehaviour
             right.SetActive(false);
             up.SetActive(false);
             flagUp = true;
+            if (backMode)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y - backY, savePosition.z);
+            }
         }
         else if(flagDown)
         {
@@ -82,13 +142,35 @@ public class CameraWark : MonoBehaviour
                 down2.SetActive(true);
             }
             flagDown = false;
+            saveRotation = cameraTransform.rotation;
+            if (backMode)
+            {
+                if (saveRotation.w == saveRotation.y)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+                }
+                else if (saveRotation.w == 0)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+                }
+                else if (saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+                }
+                else if (saveRotation.w == -1 || saveRotation.w == 1)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+                }
+            }
         }
         
+
     }
 
     public void TurnDown()
     {
-        if(!flagDown&&!flagUp)
+        cameraTransform.position = savePosition;
+        if (!flagDown&&!flagUp)
         {
             x = 90;
             cameraTransform.Rotate(new Vector3(x, y, z));
@@ -100,6 +182,10 @@ public class CameraWark : MonoBehaviour
             down.SetActive(false);
             down2.SetActive(false);
             flagDown = true;
+            if (backMode)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y + backY, savePosition.z);
+            }
         }
         else if(flagUp)
         {
@@ -112,6 +198,26 @@ public class CameraWark : MonoBehaviour
             right.SetActive(true);
             up.SetActive(true);
             flagUp = false;
+            saveRotation = cameraTransform.rotation;
+            if (backMode)
+            {
+                if (saveRotation.w == saveRotation.y)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+                }
+                else if (saveRotation.w == 0)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+                }
+                else if (saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+                }
+                else if (saveRotation.w == -1 || saveRotation.w == 1)
+                {
+                    cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+                }
+            }
         }
         
 
