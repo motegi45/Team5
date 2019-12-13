@@ -24,15 +24,20 @@ public class ItemBar : MonoBehaviour
     /// <summary>現在選択中かどうかを判定する<summary>
     public bool selected;
 
-    //ボタンをキャッシュする変数
-    Button btn;
+    //ボタンのコンポーネントを保存する配列
+    public Button[] btns;
     bool btnChangeFlag = true;
 
     void Awake()
     {
-        //何度もアクセスするのでこの変数にキャッシュ
-        btn = buttons[0].GetComponent<Button>();
-        btn.image.color = btnColor1;
+        int i = 0;
+        while (i < 8)
+        {
+            btns[i] = buttons[i].GetComponent<Button>();
+            btns[i].image.color = btnColor1;
+            i++;
+        }
+        
     }
 
     private void Start()
@@ -45,10 +50,10 @@ public class ItemBar : MonoBehaviour
         
     }
 
-    public void OnClick()
+    public void OnClick(int number)
     {
         btnChangeFlag = !btnChangeFlag;
-        btn.image.color = btnChangeFlag ? btnColor1 : btnColor2;
+        btns[number].image.color = btnChangeFlag ? btnColor1 : btnColor2;
     }
 
 }
