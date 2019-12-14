@@ -15,14 +15,11 @@ public class ItemBar : MonoBehaviour
     [SerializeField] public GameObject[] ports;
     /// <summary>現在使用可能なアイテム一覧</summary> 
     [SerializeField] public  GameObject[] canUseItem ;
+    //0 = 日記1
 
-    /// <summary>現在使用可能なアイテムの配列に使うインデックス</summary>
-    //public int canIndex;
-    public string selectedButton; 
-    /// <summary>選択中のアイテム</summary>
-    public GameObject selectedItem;
+    
     /// <summary>現在選択中かどうかを判定する<summary>
-    public bool selected;
+    public int selected = 8;
 
     //ボタンのコンポーネントを保存する配列
     public Button[] btns;
@@ -52,8 +49,36 @@ public class ItemBar : MonoBehaviour
 
     public void OnClick(int number)
     {
-        btnChangeFlag = !btnChangeFlag;
-        btns[number].image.color = btnChangeFlag ? btnColor1 : btnColor2;
+        int i = 0;
+        if (btns[number].image.color == btnColor2)
+        {
+            while (i < 8)
+            {
+                btns[i].image.color = btnColor1;
+                i++;
+            }
+        }
+        else
+        {
+            while (i < 8)
+            {
+                btns[i].image.color = btnColor1;
+                i++;
+            }
+            btnChangeFlag = !btnChangeFlag;
+            //btns[number].image.color = btnChangeFlag ? btnColor1 : btnColor2;
+            btns[number].image.color = btnColor2;
+        }
+        GameObject selectedPort = GameObject.Find("Port" + number);
+        if (selectedPort.transform.GetChild(0))
+        {
+            GameObject selectedItem = selectedPort.transform.GetChild(0).gameObject;
+            if (selectedItem.name == "Diary1")
+            {
+                canUseItem[0].SetActive(true);
+            }
+        }
+        
     }
 
 }
