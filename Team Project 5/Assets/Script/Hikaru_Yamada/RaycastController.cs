@@ -45,7 +45,7 @@ public class RaycastController : MonoBehaviour
                 Debug.DrawLine(ray.origin, hit.point, m_debugRayColorOnHit);
                 if (hit.collider.tag == "Item")
                 {
-                    var itemBar = GameObject.Find("Canvas").transform.Find("ItemBar");
+                    var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
                     var script = itemBar.GetComponent<ItemBar>();
 
                     var itemObject = GameObject.Find(hit.collider.gameObject.name);
@@ -62,7 +62,6 @@ public class RaycastController : MonoBehaviour
                         script.canUseItem[i] = itemObject;
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
-                        
                         
                     //}
                 }
