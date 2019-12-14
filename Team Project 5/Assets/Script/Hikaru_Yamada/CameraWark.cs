@@ -28,16 +28,52 @@ public class CameraWark : MonoBehaviour
     [SerializeField] public float backZ;
     public Vector3 savePosition;
     public Quaternion  saveRotation;
+    float xLange;
+    float zLange;
+    bool go = false;
+    int i = 0;
+
+
+    //部屋から出る
+    [SerializeField] GameObject door;
+    [SerializeField] GameObject openButton;
 
     // Start is called before the first frame update
     void Start()
     {
         savePosition = cameraTransform.position;
+        xLange = this.transform.position.x - door.transform.position.x;
+        //var yLange = this.transform.position.y - door.transform.position.y;
+        zLange = this.transform.position.z - door.transform.position.z;
+        xLange = xLange / 80;
+        //yLange = yLange / 300000;
+        zLange = zLange / 80;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.RightArrow)&&!flagDown&&!flagUp)
+        {
+            TurnRight();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)&&!flagUp&&!flagDown)
+        {
+            TurnLeft();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow)&&!flagUp)
+        {
+            TurnUp();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && !flagDown)
+        {
+            TurnDown();
+        }
+        if (go && i <= 160)
+        {
+            this.transform.position = new Vector3(this.transform.position.x - xLange, this.transform.position.y, this.transform.position.z - zLange);
+            i++;
+        }
         
     }
 
@@ -219,8 +255,24 @@ public class CameraWark : MonoBehaviour
                 }
             }
         }
-        
+    }
 
+    public void Goto()
+    {
+        go = true;
+        /*
+        for (int i = 0; i < 300; i++)//this.transform.position == door.transform.position)
+        {
+            var xLange = this.transform.position.x - door.transform.position.x;
+            //var yLange = this.transform.position.y - door.transform.position.y;
+            var zLange = this.transform.position.z - door.transform.position.z;
+            xLange = xLange / 300;
+            //yLange = yLange / 300000;
+            zLange = zLange / 300;
+            this.transform.position = new Vector3(this.transform.position.x + xLange,this.transform.position.y,this.transform.position.z + zLange);
+            
+        }
+        */
 
     }
 
