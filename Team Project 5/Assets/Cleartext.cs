@@ -32,7 +32,7 @@ public class Cleartext : MonoBehaviour
         {
             Panel.SetActive(true);
             myText.text = "おめでとう！";
-            myText2.text = "だが僕たちの脱出はこれからだ！";
+            myText2.text = "だが,君たちの脱出はこれからだ！";
             myText3.text = "続きは製品版で！";
         }
     }
