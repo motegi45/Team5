@@ -37,10 +37,12 @@ public class CameraWark : MonoBehaviour
     //部屋から出る
     [SerializeField] GameObject door;
     [SerializeField] GameObject openButton;
+    [SerializeField] GameObject Panel;
 
     // Start is called before the first frame update
     void Start()
     {
+        Panel.SetActive(false);
         savePosition = cameraTransform.position;
         xLange = this.transform.position.x - door.transform.position.x;
         //var yLange = this.transform.position.y - door.transform.position.y;
@@ -73,6 +75,10 @@ public class CameraWark : MonoBehaviour
         {
             this.transform.position = new Vector3(this.transform.position.x - xLange, this.transform.position.y, this.transform.position.z - zLange);
             i++;
+        }
+        if (i >= 160)
+        {
+            Panel.SetActive(true);
         }
         
     }
