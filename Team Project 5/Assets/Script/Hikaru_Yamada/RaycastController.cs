@@ -60,10 +60,11 @@ public class RaycastController : MonoBehaviour
                     //{
                         var ParentPort = GameObject.Find("Port" + i);
                         script.canUseItem[i] = itemObject;
+                        
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
                     itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-                    itemObject.transform.localScale = new Vector3(100,100,100);
+                    itemObject.transform.localScale = new Vector3(110,110,110);
                     
                         
                     //}

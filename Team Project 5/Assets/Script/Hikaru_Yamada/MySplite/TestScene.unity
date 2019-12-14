@@ -1814,8 +1814,8 @@ RectTransform:
   m_Father: {fileID: 2053202048}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.43, y: 0.91}
-  m_AnchorMax: {x: 0.57, y: 0.96}
+  m_AnchorMin: {x: 0.43, y: 0.93}
+  m_AnchorMax: {x: 0.57, y: 0.98}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5960,12 +5960,12 @@ PrefabInstance:
     - target: {fileID: 108029306965774366, guid: 6af64d219c21d404395def98f843b3b4,
         type: 3}
       propertyPath: m_Range
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 108029306965774366, guid: 6af64d219c21d404395def98f843b3b4,
         type: 3}
       propertyPath: m_Intensity
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 108029306965774366, guid: 6af64d219c21d404395def98f843b3b4,
         type: 3}
@@ -5976,14 +5976,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Lightmapping
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.482
       objectReference: {fileID: 0}
     - target: {fileID: 114268746033191470, guid: 6af64d219c21d404395def98f843b3b4,
         type: 3}
@@ -6024,6 +6016,14 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.482
       objectReference: {fileID: 0}
     - target: {fileID: 23702133888619630, guid: 6af64d219c21d404395def98f843b3b4,
         type: 3}
@@ -6710,8 +6710,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  selectedButton: 
-  selectedItem: {fileID: 0}
   selected: 0
   btns:
   - {fileID: 911905020}
@@ -9015,8 +9013,8 @@ RectTransform:
   m_Father: {fileID: 2053202048}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.43, y: 0.04}
-  m_AnchorMax: {x: 0.57, y: 0.09}
+  m_AnchorMin: {x: 0.43, y: 0.02}
+  m_AnchorMax: {x: 0.57, y: 0.07}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9891,7 +9889,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 6d0059639799cbe4ea996de11d12834b, type: 3}
       propertyPath: m_Name
-      value: Diary_prefab
+      value: Diary1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6d0059639799cbe4ea996de11d12834b, type: 3}
       propertyPath: m_TagString
