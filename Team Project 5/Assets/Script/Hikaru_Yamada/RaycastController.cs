@@ -17,6 +17,10 @@ public class RaycastController : MonoBehaviour
     [SerializeField] Color m_debugRayColorOnHit = Color.red;
     /// <summary>レイヤーマスク</summary>
     [SerializeField] LayerMask layerMask = 8;
+    /// <summary> 鍵選択中 </summary>
+    public bool keySelect = false;
+    [SerializeField] GameObject Door1;
+    [SerializeField] GameObject itemBar;
     /// <summary>ここに GameObject を設定すると、飛ばした Ray が何かに当たった時にそこに m_marker を移動する</summary>
     //[SerializeField] GameObject m_marker;
     /// <summary>飛ばした Ray が当たった座標に m_marker を移動する際、Ray が当たった座標からどれくらいずらした場所に移動するかを設定する</summary>
@@ -64,10 +68,24 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
                     itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-                    itemObject.transform.localScale = new Vector3(110,110,110);
+                    itemObject.transform.localScale = new Vector3(130,130,130);
                     
                         
                     //}
+                }
+                if (hit.collider.tag == "Door")
+                {
+                    if (keySelect)
+                    {
+                        
+                        var door1Anim = Door1.GetComponent<Animation>();
+                        Debug.Log(door1Anim);
+                        var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        ItemBarScript.DeleteItem();
+                        door1Anim.Play();
+                        Invoke("ButtonSyutugen",3f);
+                        
+                    }
                 }
                 
                 
@@ -83,6 +101,11 @@ public class RaycastController : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * m_debugRayLength);
             }
         }
+    }
+
+    void ButtonSyutugen()
+    {
+        GameObject.Find("CanvasWorld").transform.Find("OpenDoorButton").gameObject.SetActive(true);
     }
 }
 
