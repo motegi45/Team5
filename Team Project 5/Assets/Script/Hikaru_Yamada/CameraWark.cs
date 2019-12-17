@@ -50,6 +50,27 @@ public class CameraWark : MonoBehaviour
         xLange = xLange / 60;
         //yLange = yLange / 300000;
         zLange = zLange / 60;
+        saveRotation = cameraTransform.rotation;
+        if (backMode)
+        {
+            if (saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == 0)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+            }
+            else if (saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y)
+            {
+                cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+            }
+            else if (saveRotation.w == -1 || saveRotation.w == 1)
+            {
+                cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+            }
+        }
+
     }
 
     // Update is called once per frame
