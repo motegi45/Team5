@@ -47,9 +47,9 @@ public class CameraWark : MonoBehaviour
         xLange = this.transform.position.x - door.transform.position.x;
         //var yLange = this.transform.position.y - door.transform.position.y;
         zLange = this.transform.position.z - door.transform.position.z;
-        xLange = xLange / 80;
+        xLange = xLange / 60;
         //yLange = yLange / 300000;
-        zLange = zLange / 80;
+        zLange = zLange / 60;
     }
 
     // Update is called once per frame
@@ -71,12 +71,12 @@ public class CameraWark : MonoBehaviour
         {
             TurnDown();
         }
-        if (go && i <= 160)
+        if (go && i <= 120)
         {
             this.transform.position = new Vector3(this.transform.position.x - xLange, this.transform.position.y, this.transform.position.z - zLange);
             i++;
         }
-        if (i >= 160)
+        if (i >= 120)
         {
             Panel.SetActive(true);
         }

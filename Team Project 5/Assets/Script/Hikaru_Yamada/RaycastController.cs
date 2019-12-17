@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 説明:
@@ -21,6 +22,7 @@ public class RaycastController : MonoBehaviour
     public bool keySelect = false;
     [SerializeField] GameObject Door1;
     [SerializeField] GameObject itemBar;
+    [SerializeField] GameObject messageWindow;
     /// <summary>ここに GameObject を設定すると、飛ばした Ray が何かに当たった時にそこに m_marker を移動する</summary>
     //[SerializeField] GameObject m_marker;
     /// <summary>飛ばした Ray が当たった座標に m_marker を移動する際、Ray が当たった座標からどれくらいずらした場所に移動するかを設定する</summary>
@@ -52,7 +54,7 @@ public class RaycastController : MonoBehaviour
                     var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
                     var script = itemBar.GetComponent<ItemBar>();
 
-                    var itemObject = GameObject.Find(hit.collider.gameObject.name);
+                    var itemObject = hit.collider.gameObject;
                     var itemScript = itemObject.GetComponent<ThisInfo>();
 
                     int i = 0;
@@ -64,11 +66,24 @@ public class RaycastController : MonoBehaviour
                     //{
                         var ParentPort = GameObject.Find("Port" + i);
                         script.canUseItem[i] = itemObject;
-                        
+                    var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                    messageText.text = itemObject.name + "を入手した。";
+                    messageWindow.SetActive(true);
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
-                    itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
-                    itemObject.transform.localScale = new Vector3(130,130,130);
+                    
+                    Debug.Log(itemObject.name);
+                    if (itemObject.name == "Key1")
+                    {
+                        itemObject.transform.localScale = new Vector3(100, 100, 100);
+                        itemObject.transform.Rotate(new Vector3(180,-90,0));
+                    }
+                    else
+                    {
+                        itemObject.transform.localScale = new Vector3(135, 135, 135);
+                        itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+                    }
+
                     
                         
                     //}
