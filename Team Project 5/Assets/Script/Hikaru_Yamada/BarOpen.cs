@@ -28,7 +28,7 @@ public class BarOpen : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") || Input.GetMouseButtonDown(1))
         {
             OpenClose();
         }

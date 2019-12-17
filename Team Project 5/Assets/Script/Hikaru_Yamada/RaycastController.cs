@@ -72,7 +72,6 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
                     
-                    Debug.Log(itemObject.name);
                     if (itemObject.name == "Key1")
                     {
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
@@ -94,7 +93,6 @@ public class RaycastController : MonoBehaviour
                     {
                         
                         var door1Anim = Door1.GetComponent<Animation>();
-                        Debug.Log(door1Anim);
                         var ItemBarScript = itemBar.GetComponent<ItemBar>();
                         ItemBarScript.DeleteItem();
                         door1Anim.Play();
