@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/fPS.unity
+    guid: a5d44d95856436a42a85f565f41e1ce8
   m_configObjects: {}
