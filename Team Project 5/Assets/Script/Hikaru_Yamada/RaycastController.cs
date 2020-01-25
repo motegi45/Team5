@@ -38,13 +38,14 @@ public class RaycastController : MonoBehaviour
         // クリックで Ray を飛ばす
         if (Input.GetButtonDown("Fire1"))
         {
+            
             // カメラの位置 → マウスでクリックした場所に Ray を飛ばすように設定する
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit; // out パラメータで Ray の衝突情報を受け取るための変数
             // Ray を飛ばして、コライダーに当たったかどうかを戻り値で受け取る
             bool isHit = Physics.Raycast(ray, out hit, 100 , layerMask); // オーバーライドがたくさんあることに注意すること
 
-            // Ray が当たったかどうかで異なる処理をする
+            // Ray が当たったかどうかで異なる処理をする1
             if (isHit)
             {
                 // Ray が当たった時は、当たった座標まで赤い線を引く
