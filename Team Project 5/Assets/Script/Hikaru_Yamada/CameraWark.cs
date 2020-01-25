@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CameraWark : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class CameraWark : MonoBehaviour
     [SerializeField] public float backX;
     [SerializeField] public float backZ;
     public Vector3 savePosition;
-    public Quaternion  saveRotation;
+    public Quaternion saveRotation;
     float xLange;
     float zLange;
     bool go = false;
@@ -39,17 +40,18 @@ public class CameraWark : MonoBehaviour
     [SerializeField] GameObject openButton;
     [SerializeField] GameObject Panel;
 
+    Animator m_anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        m_anim = GetComponent<Animator>();
         Panel.SetActive(false);
         savePosition = cameraTransform.position;
-        xLange = this.transform.position.x - door.transform.position.x;
-        //var yLange = this.transform.position.y - door.transform.position.y;
+        /*xLange = this.transform.position.x - door.transform.position.x;
         zLange = this.transform.position.z - door.transform.position.z;
         xLange = xLange / 60;
-        //yLange = yLange / 300000;
-        zLange = zLange / 60;
+        zLange = zLange / 60;*/
         saveRotation = cameraTransform.rotation;
         if (backMode)
         {
@@ -76,15 +78,66 @@ public class CameraWark : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow)&&!flagDown&&!flagUp)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !flagDown && !flagUp)
         {
-            TurnRight();
+            //TurnRight();
+            //this.transform.DOMove(endValue: new Vector3(savePosition.x - backX, savePosition.y, savePosition.z - backZ), duration: 1.0f);
+            saveRotation = cameraTransform.rotation;
+            if (backMode)
+            {
+                float diff = Mathf.Abs(cameraTransform.eulerAngles.y - 90.0f);
+                // 0.000002 <= 0.001
+                if(diff <= 1)
+                {
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ), duration: 1.0f);
+                }
+
+                diff = Mathf.Abs(cameraTransform.eulerAngles.y + 180.0f);
+                // 0.000002 <= 0.001
+                if (diff <= 1)
+                {
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x + backX, savePosition.y, savePosition.z), duration: 1.0f);
+                }
+
+                diff = Mathf.Abs(cameraTransform.eulerAngles.y + 90.0f);
+                // 0.000002 <= 0.001
+                if (diff <= 1)
+                {
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ), duration: 1.0f);
+                }
+
+                if (/*saveRotation.w == saveRotation.y*/cameraTransform.eulerAngles.y == 90)
+                {
+                    //this.transform.DOMove(endValue: new Vector3(savePosition.x - backX, savePosition.y, savePosition.z), duration: 1.0f);
+                    //cameraTransform.position = new Vector3(savePosition.x - backX, savePosition.y, savePosition.z);
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ), duration: 1.0f);
+                }
+                else if (/*saveRotation.w == 0*/cameraTransform.eulerAngles.y == -180)
+                {
+                    //cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z + backZ);
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x + backX, savePosition.y, savePosition.z), duration: 1.0f);
+                }
+                else if (/*saveRotation.w == -saveRotation.y || -saveRotation.w == saveRotation.y*/cameraTransform.eulerAngles.y == -90)
+                {
+                    //this.transform.DOMove(endValue: new Vector3(savePosition.x + backX, savePosition.y, savePosition.z), duration: 1.0f);
+                    //cameraTransform.position = new Vector3(savePosition.x + backX, savePosition.y, savePosition.z);
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ), duration: 1.0f);
+                }
+                else if (/*saveRotation.w == -1 || saveRotation.w == 1*/cameraTransform.eulerAngles.y == 0)
+                {
+                    //cameraTransform.position = new Vector3(savePosition.x, savePosition.y, savePosition.z - backZ);
+                    this.transform.DOMove(endValue: new Vector3(savePosition.x - backX, savePosition.y, savePosition.z), duration: 1.0f);
+                }
+            }
+            m_anim.Play("RotateRight");
+
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)&&!flagUp&&!flagDown)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !flagUp && !flagDown)
         {
-            TurnLeft();
+            //TurnLeft();
+            m_anim.Play("RotateLeft");
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow)&&!flagUp)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !flagUp)
         {
             TurnUp();
         }
@@ -92,7 +145,8 @@ public class CameraWark : MonoBehaviour
         {
             TurnDown();
         }
-        if (go && i <= 120)
+
+        /*if (go && i <= 120)
         {
             this.transform.position = new Vector3(this.transform.position.x - xLange, this.transform.position.y, this.transform.position.z - zLange);
             i++;
@@ -100,15 +154,14 @@ public class CameraWark : MonoBehaviour
         if (i >= 120)
         {
             Panel.SetActive(true);
-        }
-        
+        }*/
     }
 
     public void TurnRight()
     {
         cameraTransform.position = savePosition;
         y = 90;
-        cameraTransform.Rotate(new Vector3(x,y,z));
+        cameraTransform.Rotate(new Vector3(x, y, z));
         x = 0;
         y = 0;
         z = 0;
@@ -170,7 +223,7 @@ public class CameraWark : MonoBehaviour
     public void TurnUp()
     {
         cameraTransform.position = savePosition;
-        if (!flagUp&&!flagDown)
+        if (!flagUp && !flagDown)
         {
             x = -90;
             cameraTransform.Rotate(new Vector3(x, y, z));
@@ -186,7 +239,7 @@ public class CameraWark : MonoBehaviour
                 cameraTransform.position = new Vector3(savePosition.x, savePosition.y - backY, savePosition.z);
             }
         }
-        else if(flagDown)
+        else if (flagDown)
         {
             BarOpen openScript = gameManager.GetComponent<BarOpen>();
             x = -90;
@@ -196,7 +249,7 @@ public class CameraWark : MonoBehaviour
             z = 0;
             left.SetActive(true);
             right.SetActive(true);
-            if(openScript.flag)
+            if (openScript.flag)
             {
                 down.SetActive(true);
             }
@@ -226,15 +279,17 @@ public class CameraWark : MonoBehaviour
                 }
             }
         }
-        
+
 
     }
 
     public void TurnDown()
     {
         cameraTransform.position = savePosition;
-        if (!flagDown&&!flagUp)
+        if (!flagDown && !flagUp)
         {
+
+            cameraTransform.DORotate(endValue: new Vector3(90f, saveRotation.y, saveRotation.z), duration: 1.0f, mode: RotateMode.FastBeyond360);
             x = 90;
             cameraTransform.Rotate(new Vector3(x, y, z));
             x = 0;
@@ -250,7 +305,7 @@ public class CameraWark : MonoBehaviour
                 cameraTransform.position = new Vector3(savePosition.x, savePosition.y + backY, savePosition.z);
             }
         }
-        else if(flagUp)
+        else if (flagUp)
         {
             x = 90;
             cameraTransform.Rotate(new Vector3(x, y, z));
@@ -287,6 +342,10 @@ public class CameraWark : MonoBehaviour
     public void Goto()
     {
         go = true;
+        if (go)
+        {
+            this.transform.DOMove(endValue: new Vector3(-0.16f, this.transform.position.y, -3.267f), duration: 5.0f);
+        }
         /*
         for (int i = 0; i < 300; i++)//this.transform.position == door.transform.position)
         {
@@ -302,7 +361,5 @@ public class CameraWark : MonoBehaviour
         */
 
     }
-
-
 }
 
