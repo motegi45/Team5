@@ -38,12 +38,12 @@ public class BarOpen : MonoBehaviour
     {
         if (!flag)
         {
-            var cameraScript = cameraWark.GetComponent<CameraWark>();
+            var cameraScript = cameraWark.GetComponent<CameraMovementController>();
             //GameObject.Find("Canvas").transform.Find("ItemBar").gameObject.SetActive(true);
             button2.SetActive(false);
             panel.SetActive(true);
             itemBar.SetActive(true);
-            if (!cameraScript.flagDown)
+            if (cameraScript.itemBarPossible)
             {
                 button1.SetActive(true);
             }
@@ -51,12 +51,12 @@ public class BarOpen : MonoBehaviour
         }
         else
         {
-            var cameraScript = cameraWark.GetComponent<CameraWark>();
+            var cameraScript = cameraWark.GetComponent<CameraMovementController>();
             //GameObject.Find("ItemBar").SetActive(false);
             button1.SetActive(false);
             panel.SetActive(false);
             itemBar.SetActive(false);
-            if (!cameraScript.flagDown)
+            if (cameraScript.itemBarPossible)
             {
                 button2.SetActive(true);
             }
