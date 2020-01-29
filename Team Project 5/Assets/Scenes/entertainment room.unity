@@ -2447,7 +2447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741364092577786, guid: 20f6a682417342d46b3f5ffe65d7b39c, type: 3}
       propertyPath: m_TagString
-      value: Item
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4397920120696070, guid: 20f6a682417342d46b3f5ffe65d7b39c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7800,7 +7800,7 @@ GameObject:
   - component: {fileID: 1528882868}
   m_Layer: 0
   m_Name: HintPlane
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7813,10 +7813,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528882867}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1528882869
