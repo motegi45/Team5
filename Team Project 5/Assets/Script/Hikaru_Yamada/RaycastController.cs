@@ -32,11 +32,14 @@ public class RaycastController : MonoBehaviour
     [SerializeField] GameObject cameraObject;
     [SerializeField] float m_moveTime = 1.0f;
     Transform zoomBefore;
-    bool zoomNew;
+    bool zoomNew = false;
+    [SerializeField] GameObject gamemanajer;
+    CameraMovementController cameraMovementController;
+
 
     void Start()
     {
-
+        cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
     }
 
     void Update()
@@ -116,16 +119,15 @@ public class RaycastController : MonoBehaviour
 
                 if(hit.collider.tag == "zoom")
                 {
-                    if (!zoomNew)
-                    {
-                        var zoomObject = hit.collider.gameObject;
-                        var zoomPoint = zoomObject.transform;
-                        zoomBefore = this.transform;
-                        SmoothMove(zoomPoint);
-                        zoomNew = true;
-                    }
-                    
-
+                        if (cameraMovementController)
+                        {
+                            var zoomObject = hit.collider.gameObject;
+                            var zoomPoint = zoomObject.transform;
+                            cameraMovementController.Zoom(zoomPoint);
+                        }
+                        // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
+                        //zoomBefore = new Transform(cameraObject.transform);
+                        
                 }
                 
                 // m_marker がアサインされていたら、それを移動する
@@ -147,18 +149,9 @@ public class RaycastController : MonoBehaviour
         GameObject.Find("CanvasWorld").transform.Find("OpenDoorButton").gameObject.SetActive(true);
     }
 
-    void SmoothMove(Transform target)
-    {
-        transform.DOLocalMove(target.transform.position, m_moveTime);
-        transform.DORotateQuaternion(target.transform.rotation, m_moveTime);
-    }
+   
 
-    public void ZoomOut()
-    {
-
-        transform.DOLocalMove(zoomBefore.transform.position, m_moveTime);
-        transform.DORotateQuaternion(zoomBefore.transform.rotation, m_moveTime);
-    }
+    
 
 }
 
