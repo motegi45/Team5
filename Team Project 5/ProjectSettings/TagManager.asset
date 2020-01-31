@@ -7,6 +7,8 @@ TagManager:
   - Item
   - Door
   - zoom
+  - "Bi\uFF47Door"
+  - BigDoor
   layers:
   - Default
   - TransparentFX
