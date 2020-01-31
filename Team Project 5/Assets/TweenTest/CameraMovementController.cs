@@ -13,6 +13,7 @@ public class CameraMovementController : MonoBehaviour
     Transform saveTransform;
     bool upFlag = false;
     public bool itemBarPossible = true;
+    bool zoomNow = false;
 
 
     void Start()
@@ -81,9 +82,27 @@ public class CameraMovementController : MonoBehaviour
         }
     }
 
-    void SmoothMove(Transform target)
+    public void Zoom(Transform target)
+    {
+        if (!zoomNow)
+        {
+            saveTransform = m_cameraPoints[m_cameraPointIndex];
+            SmoothMove(target);
+            zoomNow = true;
+        }
+    }
+
+    public void SmoothMove(Transform target)
     {
         transform.DOLocalMove(target.transform.position, m_moveTime);
         transform.DORotateQuaternion(target.transform.rotation, m_moveTime);
+    }
+
+    public void ZoomOut()
+    {
+
+        transform.DOLocalMove(saveTransform.transform.position, m_moveTime);
+        transform.DORotateQuaternion(saveTransform.transform.rotation, m_moveTime);
+        zoomNow = false;
     }
 }
