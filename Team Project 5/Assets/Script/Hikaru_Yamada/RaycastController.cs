@@ -22,6 +22,8 @@ public class RaycastController : MonoBehaviour
     /// <summary> 鍵選択中 </summary>
     public bool keySelect = false;
     [SerializeField] GameObject Door1;
+    [SerializeField] GameObject bigDoor1;
+    [SerializeField] GameObject bigDoor2;
     [SerializeField] GameObject itemBar;
     [SerializeField] GameObject messageWindow;
     /// <summary>ここに GameObject を設定すると、飛ばした Ray が何かに当たった時にそこに m_marker を移動する</summary>
@@ -38,14 +40,14 @@ public class RaycastController : MonoBehaviour
     CameraMovementController cameraMovementController;
     //opensystem opensystem;
     bool clear = false;
-    [SerializeField] float m_timer;
+    [SerializeField] float m_timer; 
 
 
     void Start()
     {
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
         //opensystem = gamemanajer.GetComponent<opensystem>();
-        //Panel.SetActive(false);
+        Panel.SetActive(false);
     }
 
     void Update()
@@ -65,6 +67,7 @@ public class RaycastController : MonoBehaviour
             {
                 // Ray が当たった時は、当たった座標まで赤い線を引く
                 Debug.DrawLine(ray.origin, hit.point, m_debugRayColorOnHit);
+                
                 if (hit.collider.tag == "Item")
                 {
                     var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
@@ -115,16 +118,33 @@ public class RaycastController : MonoBehaviour
                     {
                         
                         var door1Anim = Door1.GetComponent<Animation>();
-                        var ItemBarScript = itemBar.GetComponent<ItemBar>();
-                        ItemBarScript.DeleteItem();
+                        //var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        //ItemBarScript.DeleteItem();
                         door1Anim.Play();
                         Invoke("ButtonSyutugen",3f);
                         
                     }
                 }
+
+                if (hit.collider.tag == "BigDoor")
+                {
+                    if (keySelect)
+                    {
+                        var bigDoor1Anim = bigDoor1.GetComponent<Animation>();
+                        var bigDoor2Anim = bigDoor2.GetComponent<Animation>();
+                        //var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        //ItemBarScript.DeleteItem();
+                        bigDoor1Anim.Play();
+                        bigDoor2Anim.Play();
+                        Invoke("ButtonSyutugen", 3f);
+                        clear = true;
+                        m_timer = 0;
+                    }
+                }
+
                 
 
-                if(hit.collider.tag == "zoom")
+                if (hit.collider.tag == "zoom")
                 {
                         if (cameraMovementController)
                         {
@@ -137,6 +157,9 @@ public class RaycastController : MonoBehaviour
                         
                 }
                 
+                
+                
+
                 // m_marker がアサインされていたら、それを移動する
                 /*if (m_marker)
                 {
@@ -149,7 +172,15 @@ public class RaycastController : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * m_debugRayLength);
             }
         }
-        
+        if (clear)
+        {
+            m_timer += Time.deltaTime;
+            if (m_timer >= 5)
+            {
+                Panel.SetActive(true);
+            }
+        }
+
     }
 
     void ButtonSyutugen()
