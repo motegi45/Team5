@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>
 /// 説明:
@@ -27,6 +28,11 @@ public class RaycastController : MonoBehaviour
     //[SerializeField] GameObject m_marker;
     /// <summary>飛ばした Ray が当たった座標に m_marker を移動する際、Ray が当たった座標からどれくらいずらした場所に移動するかを設定する</summary>
     //[SerializeField] Vector3 m_markerOffset = Vector3.up / 2;
+    [SerializeField] Transform[] zoomPoints;
+    [SerializeField] GameObject cameraObject;
+    [SerializeField] float m_moveTime = 1.0f;
+    Transform zoomBefore;
+    bool zoomNew;
 
     void Start()
     {
@@ -107,7 +113,20 @@ public class RaycastController : MonoBehaviour
                         
                     }
                 }
-                
+
+                if(hit.collider.tag == "zoom")
+                {
+                    if (!zoomNew)
+                    {
+                        var zoomObject = hit.collider.gameObject;
+                        var zoomPoint = zoomObject.transform;
+                        zoomBefore = this.transform;
+                        SmoothMove(zoomPoint);
+                        zoomNew = true;
+                    }
+                    
+
+                }
                 
                 // m_marker がアサインされていたら、それを移動する
                 /*if (m_marker)
@@ -127,5 +146,19 @@ public class RaycastController : MonoBehaviour
     {
         GameObject.Find("CanvasWorld").transform.Find("OpenDoorButton").gameObject.SetActive(true);
     }
+
+    void SmoothMove(Transform target)
+    {
+        transform.DOLocalMove(target.transform.position, m_moveTime);
+        transform.DORotateQuaternion(target.transform.rotation, m_moveTime);
+    }
+
+    public void ZoomOut()
+    {
+
+        transform.DOLocalMove(zoomBefore.transform.position, m_moveTime);
+        transform.DORotateQuaternion(zoomBefore.transform.rotation, m_moveTime);
+    }
+
 }
 
