@@ -370,6 +370,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55687357}
   m_CullTransparentMesh: 0
+--- !u!1 &77017473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ee86d3c09bbc0e245b6c99cd6992858f,
+    type: 3}
+  m_PrefabInstance: {fileID: 328604741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &79255745
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03, y: 0.42}
   m_AnchorMax: {x: 0.07, y: 0.58}
-  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178616491
@@ -1868,6 +1874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door1opening_prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.82
@@ -1911,6 +1921,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11100000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
@@ -3203,7 +3221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.93, y: 0.42}
   m_AnchorMax: {x: 0.97, y: 0.58}
-  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593433203
@@ -3569,14 +3587,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   keySelect: 0
-  Door1: {fileID: 0}
+  Door1: {fileID: 77017473}
   itemBar: {fileID: 438072142}
   messageWindow: {fileID: 313504761}
   zoomPoints:
   - {fileID: 1176540294}
   cameraObject: {fileID: 1619517508}
   m_moveTime: 1
-  gamemanajer: {fileID: 0}
+  gamemanajer: {fileID: 654767739}
+  Panel: {fileID: 0}
+  m_timer: 0
 --- !u!1001 &674043204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6523,6 +6543,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+--- !u!1 &1180418652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: ee86d3c09bbc0e245b6c99cd6992858f,
+    type: 3}
+  m_PrefabInstance: {fileID: 328604741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1180418655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180418652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8238929, y: 1.810619, z: 0.14108877}
+  m_Center: {x: -0.4, y: 0.9, z: 0.007849461}
 --- !u!1001 &1188429633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9127,8 +9166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myText: {fileID: 2088522729}
-  myText2: {fileID: 55687359}
-  myText3: {fileID: 747523789}
   Panel: {fileID: 15462350}
   desire: 0
 --- !u!114 &1777359233
