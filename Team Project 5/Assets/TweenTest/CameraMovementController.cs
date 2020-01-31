@@ -15,6 +15,7 @@ public class CameraMovementController : MonoBehaviour
     bool upFlag = false;
     public bool itemBarPossible = true;
     bool zoomNow = false;
+    
 
 
     void Start()
@@ -48,6 +49,7 @@ public class CameraMovementController : MonoBehaviour
             {
                 SmoothMove(saveTransform);
                 upFlag = false;
+
             }
         }
     }

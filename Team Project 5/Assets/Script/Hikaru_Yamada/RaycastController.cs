@@ -34,12 +34,18 @@ public class RaycastController : MonoBehaviour
     Transform zoomBefore;
     bool zoomNew = false;
     [SerializeField] GameObject gamemanajer;
+    [SerializeField] GameObject Panel;
     CameraMovementController cameraMovementController;
+    //opensystem opensystem;
+    bool clear = false;
+    [SerializeField] float m_timer;
 
 
     void Start()
     {
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
+        //opensystem = gamemanajer.GetComponent<opensystem>();
+        //Panel.SetActive(false);
     }
 
     void Update()
@@ -116,6 +122,7 @@ public class RaycastController : MonoBehaviour
                         
                     }
                 }
+                
 
                 if(hit.collider.tag == "zoom")
                 {
@@ -142,6 +149,7 @@ public class RaycastController : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * m_debugRayLength);
             }
         }
+        
     }
 
     void ButtonSyutugen()

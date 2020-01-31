@@ -8,8 +8,8 @@ public class Cleartext : MonoBehaviour
     Image BGimage;
     int i = 0;
     [SerializeField] Text myText;
-    [SerializeField] Text myText2;
-    [SerializeField] Text myText3;
+    //[SerializeField] Text myText2;
+    //[SerializeField] Text myText3;
     [SerializeField] GameObject Panel;
     [SerializeField] float desire = 0;
     // Start is called before the first frame update
@@ -31,9 +31,9 @@ public class Cleartext : MonoBehaviour
         else
         {
             Panel.SetActive(true);
-            myText.text = "おめでとう！";
-            myText2.text = "だが僕たちの脱出はこれからだ！";
-            myText3.text = "続きは製品版で！";
+            myText.text = "congratulation!!";
+            //myText2.text = "だが僕たちの脱出はこれからだ！";
+            //myText3.text = "続きは製品版で！";
         }
     }
 
