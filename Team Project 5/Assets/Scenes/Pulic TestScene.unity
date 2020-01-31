@@ -6450,6 +6450,11 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23702133888619630, guid: 6af64d219c21d404395def98f843b3b4,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.11
@@ -6457,11 +6462,6 @@ PrefabInstance:
     - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.482
-      objectReference: {fileID: 0}
-    - target: {fileID: 23702133888619630, guid: 6af64d219c21d404395def98f843b3b4,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
@@ -8683,6 +8683,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366466208655, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 838924366976050711, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -8703,26 +8723,6 @@ PrefabInstance:
     - target: {fileID: 838924367539207610, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_FontData.m_Alignment
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 838924366727526958, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 838924366466208655, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
