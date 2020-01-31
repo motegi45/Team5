@@ -8,7 +8,8 @@ public class CameraMovementController : MonoBehaviour
     [SerializeField] Transform[] m_cameraPoints;
     [SerializeField] float m_moveTime = 1.0f;
     int m_cameraPointIndex;
-
+    [SerializeField] GameObject Panel;
+    [SerializeField] GameObject Panel2;
     [SerializeField] Transform m_cameraPinPoint;
     Transform saveTransform;
     bool upFlag = false;
@@ -18,7 +19,7 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
-
+        Panel2.SetActive(false);
     }
 
     void Update()
@@ -89,6 +90,8 @@ public class CameraMovementController : MonoBehaviour
             saveTransform = m_cameraPoints[m_cameraPointIndex];
             SmoothMove(target);
             zoomNow = true;
+            Panel.SetActive(false);
+            Panel2.SetActive(true);
         }
     }
 
@@ -100,9 +103,10 @@ public class CameraMovementController : MonoBehaviour
 
     public void ZoomOut()
     {
-
         transform.DOLocalMove(saveTransform.transform.position, m_moveTime);
         transform.DORotateQuaternion(saveTransform.transform.rotation, m_moveTime);
         zoomNow = false;
+        Panel.SetActive(true);
+        Panel2.SetActive(false);
     }
 }
