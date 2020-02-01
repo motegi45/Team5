@@ -20,11 +20,13 @@ public class CameraMovementController : MonoBehaviour
     public bool itemBarPossible = true;
     bool zoomNow = false;
     public int info = 1;
+    [SerializeField] Transform hint;
 
 
 
     void Start()
     {
+        var hintsystem = hint.GetComponent<hintsystem>();
         //Panel2.SetActive(false);
     }
 

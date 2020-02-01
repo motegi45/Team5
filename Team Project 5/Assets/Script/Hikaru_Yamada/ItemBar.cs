@@ -19,7 +19,10 @@ public class ItemBar : MonoBehaviour
     [SerializeField] public GameObject[] allItem;
     //0 = 日記1
     [SerializeField] GameObject raycast;
-    
+    [SerializeField] Transform hint;
+    GameObject[] allItemListPort;
+    public GameObject[] allItemList;
+
     /// <summary>現在選択中かどうかを判定する<summary>
     public int selected = 8;
 
@@ -44,7 +47,7 @@ public class ItemBar : MonoBehaviour
 
     private void Start()
     {
-        
+        var hintsystem = hint.GetComponent<hintsystem>();
     }
 
     void Update()
@@ -130,6 +133,19 @@ public class ItemBar : MonoBehaviour
         Destroy(selectedport.transform.GetChild(0).gameObject);
         var raycastComp = raycast.GetComponent<RaycastController>();
         raycastComp.keySelect = false;
+    }
+
+    public void itemList()
+    {
+        int i = 0;
+        while (i < 8)
+        {
+            allItemListPort[i] = GameObject.Find("Port" + i);
+            if (allItemListPort[i].transform.GetChild(0))
+            {
+                allItemList[i] = allItemListPort[i].transform.GetChild(0).gameObject;
+            }
+        }
     }
 
 }
