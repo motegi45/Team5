@@ -1080,10 +1080,12 @@ MonoBehaviour:
   m_cameraPoints3: []
   m_cameraPoints4: []
   m_moveTime: 1
+
   m_cameraPinPoint: {fileID: 350981689}
   itemBarPossible: 1
   info: 1
   hint: {fileID: 0}
+
   gameManager: {fileID: 1803885353}
   Panel: {fileID: 2030188490}
   itemBar: {fileID: 375723833}
@@ -1091,6 +1093,7 @@ MonoBehaviour:
   button1: {fileID: 1401073848}
   button2: {fileID: 84147992}
   itemflag: 0
+
 --- !u!81 &260415386
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13050,6 +13053,7 @@ Transform:
   m_Father: {fileID: 2068266238}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!114 &1803885356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13087,7 +13091,9 @@ MonoBehaviour:
   m_timer: 0
   sink1: {fileID: 1459505150774346}
   sink2: {fileID: 1459505639848578}
+
   saveBoxCollider: {fileID: 0}
+
 --- !u!1 &1859178057
 GameObject:
   m_ObjectHideFlags: 0
