@@ -13,6 +13,7 @@ public class Diyal : MonoBehaviour
     [SerializeField] GameObject[] buttonHekomu;
     int blockIndex;
     [SerializeField] float m_moveTime = 0.2f;
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,24 +27,29 @@ public class Diyal : MonoBehaviour
 
     public void numberButtonClick(int block)
     {
-        SmoothMove(buttonHekomu[block].transform);
-        result.text  += block.ToString();
-        SmoothMove(buttonBlock[block].transform);
+        if (count < 5)
+        {
+            count++;
+            //SmoothMove(buttonHekomu[block].transform);
+            result.text += block.ToString();
+            //SmoothMove(buttonBlock[block].transform);
+        }
     }
     public void deleteButtonClick(int block)
     {
-        SmoothMove(buttonHekomu[block].transform);
+        //SmoothMove(buttonHekomu[block].transform);
         result.text = "";
-        SmoothMove(buttonBlock[block].transform);
+        //SmoothMove(buttonBlock[block].transform);
+        count = 0;
     }
     public void enterButtonClick(int block)
     {
-        SmoothMove(buttonHekomu[block].transform);
+        //SmoothMove(buttonHekomu[block].transform);
         if (result.text == "0000")
         {
 
         }
-        SmoothMove(buttonBlock[block].transform);
+        //SmoothMove(buttonBlock[block].transform);
     }
     public void SmoothMove(Transform target)
     {
