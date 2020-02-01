@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 説明:
@@ -13,6 +14,8 @@ using DG.Tweening;
 /// </summary>
 public class RaycastController : MonoBehaviour
 {
+    [SerializeField] string enterRoom;
+    [SerializeField] string firstRoom;
     /// <summary>Ray が何にも当たらなかった時、Scene に表示する Ray の長さ</summary>
     [SerializeField] float m_debugRayLength = 100f;
     /// <summary>Ray が何かに当たった時に Scene に表示する Ray の色</summary>
@@ -21,7 +24,10 @@ public class RaycastController : MonoBehaviour
     [SerializeField] LayerMask layerMask = 8;
     /// <summary> 鍵選択中 </summary>
     public bool keySelect = false;
+    public bool keySelect2 = false;
     [SerializeField] GameObject Door1;
+    [SerializeField] GameObject bigDoor1;
+    [SerializeField] GameObject bigDoor2;
     [SerializeField] GameObject itemBar;
     [SerializeField] GameObject messageWindow;
     /// <summary>ここに GameObject を設定すると、飛ばした Ray が何かに当たった時にそこに m_marker を移動する</summary>
@@ -33,19 +39,18 @@ public class RaycastController : MonoBehaviour
     [SerializeField] float m_moveTime = 1.0f;
     Transform zoomBefore;
     bool zoomNew = false;
-    [SerializeField] GameObject gamemanajer;
     [SerializeField] GameObject Panel;
     CameraMovementController cameraMovementController;
     //opensystem opensystem;
     bool clear = false;
-    [SerializeField] float m_timer;
+    [SerializeField] float m_timer; 
 
 
     void Start()
     {
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
         //opensystem = gamemanajer.GetComponent<opensystem>();
-        //Panel.SetActive(false);
+        Panel.SetActive(false);
     }
 
     void Update()
@@ -65,6 +70,7 @@ public class RaycastController : MonoBehaviour
             {
                 // Ray が当たった時は、当たった座標まで赤い線を引く
                 Debug.DrawLine(ray.origin, hit.point, m_debugRayColorOnHit);
+                
                 if (hit.collider.tag == "Item")
                 {
                     var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
@@ -88,7 +94,7 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
                     
-                    if (itemObject.name == "Key1")
+                    if (itemObject.name == "Key1" || itemObject.name == "Key2")
                     {
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
                         itemObject.transform.Rotate(new Vector3(180,-90,0));
@@ -122,9 +128,26 @@ public class RaycastController : MonoBehaviour
                         
                     }
                 }
+
+                if (hit.collider.tag == "BigDoor")
+                {
+                    if (keySelect2)
+                    {
+                        var bigDoor1Anim = bigDoor1.GetComponent<Animation>();
+                        var bigDoor2Anim = bigDoor2.GetComponent<Animation>();
+                        var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        ItemBarScript.DeleteItem();
+                        bigDoor1Anim.Play();
+                        bigDoor2Anim.Play();
+                        Invoke("ButtonSyutugen", 3f);
+                        clear = true;
+                        m_timer = 0;
+                    }
+                }
+
                 
 
-                if(hit.collider.tag == "zoom")
+                if (hit.collider.tag == "zoom")
                 {
                         if (cameraMovementController)
                         {
@@ -132,16 +155,20 @@ public class RaycastController : MonoBehaviour
                             var zoomPoint = zoomObject.transform;
                             cameraMovementController.Zoom(zoomPoint);
                         }
-                        // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
-                        //zoomBefore = new Transform(cameraObject.transform);
-                        
+                    // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
+                    //zoomBefore = new Transform(cameraObject.transform);
+
                 }
-                
-                // m_marker がアサインされていたら、それを移動する
-                /*if (m_marker)
+
+                if (hit.collider.tag == "reFirstDoor")
                 {
-                    m_marker.transform.position = hit.point + m_markerOffset;
-                }*/
+                    Scenechange(firstRoom);
+                }
+
+                if (hit.collider.tag == "enterDoor")
+                {
+                    Scenechange(enterRoom);
+                }
             }
             else
             {
@@ -149,7 +176,15 @@ public class RaycastController : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * m_debugRayLength);
             }
         }
-        
+        if (clear)
+        {
+            m_timer += Time.deltaTime;
+            if (m_timer >= 5)
+            {
+                Panel.SetActive(true);
+            }
+        }
+
     }
 
     void ButtonSyutugen()
@@ -157,9 +192,14 @@ public class RaycastController : MonoBehaviour
         GameObject.Find("CanvasWorld").transform.Find("OpenDoorButton").gameObject.SetActive(true);
     }
 
-   
+    public void Scenechange(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 
-    
+
+
+
 
 }
 
