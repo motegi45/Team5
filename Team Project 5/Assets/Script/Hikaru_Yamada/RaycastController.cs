@@ -154,11 +154,10 @@ public class RaycastController : MonoBehaviour
                             var zoomPoint = zoomObject.transform;
                             cameraMovementController.Zoom(zoomPoint);
                         }
-                        // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
-                        //zoomBefore = new Transform(cameraObject.transform);
-                        
+                    // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
+                    //zoomBefore = new Transform(cameraObject.transform);
+
                 }
-<<<<<<< HEAD
 
                 if (hit.collider.tag == "reFirstDoor")
                 {
@@ -169,17 +168,6 @@ public class RaycastController : MonoBehaviour
                 {
                     Scenechange(enterRoom);
                 }
-=======
-                
-                
-                
->>>>>>> be797e12864bb9a0b62fba32b4b09393ac889a11
-
-                // m_marker がアサインされていたら、それを移動する
-                /*if (m_marker)
-                {
-                    m_marker.transform.position = hit.point + m_markerOffset;
-                }*/
             }
             else
             {

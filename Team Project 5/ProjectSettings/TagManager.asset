@@ -7,13 +7,8 @@ TagManager:
   - Item
   - Door
   - zoom
-<<<<<<< HEAD
   - enterDoor
   - reFirstDoor
-=======
-  - "Bi\uFF47Door"
-  - BigDoor
->>>>>>> be797e12864bb9a0b62fba32b4b09393ac889a11
   layers:
   - Default
   - TransparentFX
