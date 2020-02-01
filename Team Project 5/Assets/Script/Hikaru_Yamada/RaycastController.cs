@@ -24,6 +24,7 @@ public class RaycastController : MonoBehaviour
     [SerializeField] LayerMask layerMask = 8;
     /// <summary> 鍵選択中 </summary>
     public bool keySelect = false;
+    public bool keySelect2 = false;
     [SerializeField] GameObject Door1;
     [SerializeField] GameObject bigDoor1;
     [SerializeField] GameObject bigDoor2;
@@ -93,7 +94,7 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.parent = ParentPort.transform;
                         itemObject.transform.position = ParentPort.transform.position;
                     
-                    if (itemObject.name == "Key1")
+                    if (itemObject.name == "Key1" || itemObject.name == "Key2")
                     {
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
                         itemObject.transform.Rotate(new Vector3(180,-90,0));
@@ -120,8 +121,8 @@ public class RaycastController : MonoBehaviour
                     {
                         
                         var door1Anim = Door1.GetComponent<Animation>();
-                        //var ItemBarScript = itemBar.GetComponent<ItemBar>();
-                        //ItemBarScript.DeleteItem();
+                        var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        ItemBarScript.DeleteItem();
                         door1Anim.Play();
                         Invoke("ButtonSyutugen",3f);
                         
@@ -130,12 +131,12 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.tag == "BigDoor")
                 {
-                    if (keySelect)
+                    if (keySelect2)
                     {
                         var bigDoor1Anim = bigDoor1.GetComponent<Animation>();
                         var bigDoor2Anim = bigDoor2.GetComponent<Animation>();
-                        //var ItemBarScript = itemBar.GetComponent<ItemBar>();
-                        //ItemBarScript.DeleteItem();
+                        var ItemBarScript = itemBar.GetComponent<ItemBar>();
+                        ItemBarScript.DeleteItem();
                         bigDoor1Anim.Play();
                         bigDoor2Anim.Play();
                         Invoke("ButtonSyutugen", 3f);

@@ -107,7 +107,19 @@ public class ItemBar : MonoBehaviour
                 }
                 
             }
-            
+            if (selectedItem.name == "Key2")
+            {
+                var raycastComp = raycast.GetComponent<RaycastController>();
+                if (raycastComp.keySelect)
+                {
+                    raycastComp.keySelect2 = false;
+                }
+                else
+                {
+                    raycastComp.keySelect2 = true;
+                }
+
+            }
         }
         
     }
