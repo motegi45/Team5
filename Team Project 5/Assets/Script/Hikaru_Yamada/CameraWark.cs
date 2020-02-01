@@ -241,7 +241,7 @@ public class CameraWark : MonoBehaviour
         }
         else if (flagDown)
         {
-            BarOpen openScript = gameManager.GetComponent<BarOpen>();
+            //BarOpen openScript = gameManager.GetComponent<BarOpen>();
             x = -90;
             cameraTransform.Rotate(new Vector3(x, y, z));
             x = 0;
@@ -249,11 +249,11 @@ public class CameraWark : MonoBehaviour
             z = 0;
             left.SetActive(true);
             right.SetActive(true);
-            if (openScript.flag)
+            //if (openScript.flag)
             {
                 down.SetActive(true);
             }
-            else if (!openScript.flag)
+            //else if (!openScript.flag)
             {
                 down2.SetActive(true);
             }

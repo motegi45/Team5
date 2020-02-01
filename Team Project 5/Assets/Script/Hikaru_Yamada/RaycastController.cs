@@ -50,7 +50,7 @@ public class RaycastController : MonoBehaviour
     SinkWater sinkWater1;
     [SerializeField] GameObject sink2;
     SinkWater sinkWater2;
-
+    public BoxCollider saveBoxCollider;
 
     void Start()
     {
@@ -166,6 +166,8 @@ public class RaycastController : MonoBehaviour
                         if (cameraMovementController)
                         {
                             var zoomObject = hit.collider.gameObject;
+                            saveBoxCollider = zoomObject.GetComponent<BoxCollider>();
+                            saveBoxCollider.enabled = false;
                             var zoomPoint = zoomObject.transform;
                             cameraMovementController.Zoom(zoomPoint);
                         }
