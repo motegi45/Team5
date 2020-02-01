@@ -25,7 +25,7 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
-        Panel2.SetActive(false);
+        //Panel2.SetActive(false);
     }
 
     void Update()
