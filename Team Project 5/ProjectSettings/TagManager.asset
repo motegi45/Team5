@@ -7,6 +7,8 @@ TagManager:
   - Item
   - Door
   - zoom
+  - enterDoor
+  - reFirstDoor
   layers:
   - Default
   - TransparentFX
