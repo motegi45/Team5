@@ -35,7 +35,6 @@ public class CameraMovementController : MonoBehaviour
     {
         raycastController = gameManager.GetComponent<RaycastController>();
         var hintsystem = hint.GetComponent<hintsystem>();
-        //Panel2.SetActive(false);
     }
 
     void Update()
@@ -75,7 +74,7 @@ public class CameraMovementController : MonoBehaviour
                 SmoothMove(m_cameraPoints3[2]);
             }
         }
-        //
+        
         if (info == 1)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
