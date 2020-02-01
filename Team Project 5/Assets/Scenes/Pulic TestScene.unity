@@ -6912,11 +6912,6 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 23702133888619630, guid: 6af64d219c21d404395def98f843b3b4,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.11
@@ -6924,6 +6919,11 @@ PrefabInstance:
     - target: {fileID: 4423239903024288, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 23702133888619630, guid: 6af64d219c21d404395def98f843b3b4,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af64d219c21d404395def98f843b3b4, type: 3}
