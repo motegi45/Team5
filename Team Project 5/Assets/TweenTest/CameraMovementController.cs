@@ -80,21 +80,32 @@ public class CameraMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
-                m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints.Length;
-                SmoothMove(m_cameraPoints[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
+                    m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints.Length;
+                    SmoothMove(m_cameraPoints[m_cameraPointIndex]);
+                }
+                   
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
-                m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints.Length) % m_cameraPoints.Length;
-                SmoothMove(m_cameraPoints[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
+                    m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints.Length) % m_cameraPoints.Length;
+                    SmoothMove(m_cameraPoints[m_cameraPointIndex]);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                saveTransform = m_cameraPoints[m_cameraPointIndex];
-                SmoothMove(m_cameraPinPoint);
-                upFlag = true;
+                if (!zoomNow && !upFlag)
+                {
+                    saveTransform = m_cameraPoints[m_cameraPointIndex];
+                    SmoothMove(m_cameraPinPoint);
+                    upFlag = true;
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -114,21 +125,32 @@ public class CameraMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
-                m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints2.Length;
-                SmoothMove(m_cameraPoints2[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
+                    m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints2.Length;
+                    SmoothMove(m_cameraPoints2[m_cameraPointIndex]);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
-                m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints2.Length) % m_cameraPoints2.Length;
-                SmoothMove(m_cameraPoints2[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
+                    m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints2.Length) % m_cameraPoints2.Length;
+                    SmoothMove(m_cameraPoints2[m_cameraPointIndex]);
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                saveTransform = m_cameraPoints2[m_cameraPointIndex];
-                SmoothMove(m_cameraPinPoint);
-                upFlag = true;
+                if (!zoomNow && !upFlag)
+                {
+                    saveTransform = m_cameraPoints2[m_cameraPointIndex];
+                    SmoothMove(m_cameraPinPoint);
+                    upFlag = true;
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -144,21 +166,33 @@ public class CameraMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
-                m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints3.Length;
-                SmoothMove(m_cameraPoints3[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
+                    m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints3.Length;
+                    SmoothMove(m_cameraPoints3[m_cameraPointIndex]);
+                }
+                   
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
-                m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints3.Length) % m_cameraPoints3.Length;
-                SmoothMove(m_cameraPoints3[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
+                    m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints3.Length) % m_cameraPoints3.Length;
+                    SmoothMove(m_cameraPoints3[m_cameraPointIndex]);
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                saveTransform = m_cameraPoints3[m_cameraPointIndex];
-                SmoothMove(m_cameraPinPoint);
-                upFlag = true;
+                if (!zoomNow && !upFlag)
+                {
+                    saveTransform = m_cameraPoints3[m_cameraPointIndex];
+                    SmoothMove(m_cameraPinPoint);
+                    upFlag = true;
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -175,21 +209,33 @@ public class CameraMovementController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
-                m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints4.Length;
-                SmoothMove(m_cameraPoints4[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, 90));
+                    m_cameraPointIndex = (m_cameraPointIndex + 1) % m_cameraPoints4.Length;
+                    SmoothMove(m_cameraPoints4[m_cameraPointIndex]);
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
-                m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints4.Length) % m_cameraPoints4.Length;
-                SmoothMove(m_cameraPoints4[m_cameraPointIndex]);
+                if (!zoomNow && !upFlag)
+                {
+                    m_cameraPinPoint.Rotate(new Vector3(0, 0, -90));
+                    m_cameraPointIndex = (m_cameraPointIndex - 1 + m_cameraPoints4.Length) % m_cameraPoints4.Length;
+                    SmoothMove(m_cameraPoints4[m_cameraPointIndex]);
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                saveTransform = m_cameraPoints4[m_cameraPointIndex];
-                SmoothMove(m_cameraPinPoint);
-                upFlag = true;
+                if (!zoomNow && !upFlag)
+                {
+                    saveTransform = m_cameraPoints4[m_cameraPointIndex];
+                    SmoothMove(m_cameraPinPoint);
+                    upFlag = true;
+                }
+                    
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
