@@ -13,7 +13,7 @@ public class SinkWater : MonoBehaviour
     /// <summary>水を全て排水した際のポジション</summary>
     [SerializeField] float m_DrainagePosition;
     /// <summary>水を入れるか排水するか</summary>
-    [SerializeField] bool m_ToWaterOrDrainage = true;
+    [SerializeField] public bool m_ToWaterOrDrainage = true;
     /// <summary>水の初期位置保存</summary>
     private Vector3 InitialPosition;
 

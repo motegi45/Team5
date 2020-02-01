@@ -43,14 +43,34 @@ public class RaycastController : MonoBehaviour
     CameraMovementController cameraMovementController;
     //opensystem opensystem;
     bool clear = false;
-    [SerializeField] float m_timer; 
+    [SerializeField] float m_timer;
+
+
+    [SerializeField] GameObject sink1;
+    SinkWater sinkWater1;
+    [SerializeField] GameObject sink2;
+    SinkWater sinkWater2;
 
 
     void Start()
     {
+        
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
+        if (sinkWater1)
+        {
+            sinkWater1 = sink1.GetComponent<SinkWater>();
+        }
+        if (sinkWater2)
+        {
+            sinkWater2 = sink2.GetComponent<SinkWater>();
+        }
         //opensystem = gamemanajer.GetComponent<opensystem>();
-        Panel.SetActive(false);
+        if (Panel)
+        {
+            Panel.SetActive(false);
+        }
+        
+        
     }
 
     void Update()
@@ -84,10 +104,9 @@ public class RaycastController : MonoBehaviour
                     {
                         i++;
                     }
-                    //if(itemScript.isAttach == false)
-                    //{
-                        var ParentPort = GameObject.Find("Port" + i);
-                        script.canUseItem[i] = itemObject;
+                   
+                    var ParentPort = GameObject.Find("Port" + i);
+                    script.canUseItem[i] = itemObject;
                     var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                     messageText.text = itemObject.name + "を入手した。";
                     messageWindow.SetActive(true);
@@ -111,9 +130,6 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
                     }
 
-                    
-                        
-                    //}
                 }
                 if (hit.collider.tag == "Door")
                 {
@@ -145,8 +161,6 @@ public class RaycastController : MonoBehaviour
                     }
                 }
 
-                
-
                 if (hit.collider.tag == "zoom")
                 {
                         if (cameraMovementController)
@@ -168,6 +182,31 @@ public class RaycastController : MonoBehaviour
                 if (hit.collider.tag == "enterDoor")
                 {
                     Scenechange(enterRoom);
+                }
+
+                if (hit.collider.name == "Sink_1")
+                {
+                    Debug.Log("aa");
+                    if (sinkWater1.m_ToWaterOrDrainage == true)
+                    {
+                        sinkWater1.ToWaterOrDrainage(false);
+                    }
+                    else if (sinkWater1.m_ToWaterOrDrainage == false)
+                    {
+                        sinkWater1.ToWaterOrDrainage(true);
+                    }
+                }
+
+                if (hit.collider.name == "Sink_2")
+                {
+                    if (sinkWater2.m_ToWaterOrDrainage == true)
+                    {
+                        sinkWater2.ToWaterOrDrainage(false);
+                    }
+                    else if (sinkWater2.m_ToWaterOrDrainage == false)
+                    {
+                        sinkWater2.ToWaterOrDrainage(true);
+                    }
                 }
             }
             else
