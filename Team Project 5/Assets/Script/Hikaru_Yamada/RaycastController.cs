@@ -56,11 +56,11 @@ public class RaycastController : MonoBehaviour
     {
         
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
-        if (sinkWater1)
+        if (sink1)
         {
             sinkWater1 = sink1.GetComponent<SinkWater>();
         }
-        if (sinkWater2)
+        if (sink2)
         {
             sinkWater2 = sink2.GetComponent<SinkWater>();
         }
@@ -186,7 +186,7 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.name == "Sink_1")
                 {
-                    Debug.Log("aa");
+                    Debug.Log(sinkWater1);
                     if (sinkWater1.m_ToWaterOrDrainage == true)
                     {
                         sinkWater1.ToWaterOrDrainage(false);
