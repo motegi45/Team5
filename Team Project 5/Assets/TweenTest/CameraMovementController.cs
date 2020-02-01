@@ -12,8 +12,6 @@ public class CameraMovementController : MonoBehaviour
 
     [SerializeField] float m_moveTime = 1.0f;
     int m_cameraPointIndex;
-    [SerializeField] GameObject Panel;
-    [SerializeField] GameObject Panel2;
     [SerializeField] Transform m_cameraPinPoint;
     Transform saveTransform;
     bool upFlag = false;
@@ -21,11 +19,21 @@ public class CameraMovementController : MonoBehaviour
     bool zoomNow = false;
     public int info = 1;
     [SerializeField] Transform hint;
+    [SerializeField] GameObject gameManager;
+    RaycastController raycastController;
 
-
+    /// <summary>baropenより</summary>
+    [SerializeField] GameObject Panel;
+    [SerializeField] GameObject itemBar;
+    [SerializeField] GameObject panelIB;
+    [SerializeField] GameObject button1;
+    [SerializeField] GameObject button2;
+    public bool itemflag = false;
+    /// <summary>まで</summary>
 
     void Start()
     {
+        raycastController = gameManager.GetComponent<RaycastController>();
         var hintsystem = hint.GetComponent<hintsystem>();
         //Panel2.SetActive(false);
     }
@@ -36,19 +44,19 @@ public class CameraMovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             info++;
-            if(info == 2)
+            if (info == 2)
             {
                 SmoothMove(m_cameraPoints2[2]);
             }
-            if(info == 3)
+            if (info == 3)
             {
                 SmoothMove(m_cameraPoints3[2]);
             }
-            if(info == 4)
+            if (info == 4)
             {
                 SmoothMove(m_cameraPoints4[2]);
             }
-            
+
 
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -90,7 +98,11 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (upFlag)
+                if (zoomNow)
+                {
+                    ZoomOut();
+                }
+                else if (upFlag)
                 {
                     SmoothMove(saveTransform);
                     upFlag = false;
@@ -188,6 +200,47 @@ public class CameraMovementController : MonoBehaviour
 
                 }
             }
+        }
+        if (Input.GetKeyDown("1") || Input.GetMouseButtonDown(1))
+        {
+            OpenClose();
+        }
+        if (upFlag == true || zoomNow == true)
+        {
+            Panel.SetActive(false);
+            if (itemflag)
+            {
+                button2.SetActive(false);
+                button1.SetActive(true);
+                panelIB.SetActive(true);
+                itemBar.SetActive(true);
+            }
+            else
+            {
+                button1.SetActive(false);
+                button2.SetActive(true);
+                panelIB.SetActive(false);
+                itemBar.SetActive(false);
+            }
+        }
+        else
+        {
+            Panel.SetActive(true);
+            if (itemflag)
+            {
+                button2.SetActive(false);
+                button1.SetActive(false);
+                panelIB.SetActive(true);
+                itemBar.SetActive(true);
+            }
+            else
+            {
+                button1.SetActive(false);
+                button2.SetActive(false);
+                panelIB.SetActive(false);
+                itemBar.SetActive(false);
+            }
+
         }
     }
     //ボタン用の関数
@@ -304,8 +357,6 @@ public class CameraMovementController : MonoBehaviour
             saveTransform = m_cameraPoints[m_cameraPointIndex];
             SmoothMove(target);
             zoomNow = true;
-            Panel.SetActive(false);
-            Panel2.SetActive(true);
         }
     }
 
@@ -320,8 +371,12 @@ public class CameraMovementController : MonoBehaviour
         transform.DOLocalMove(saveTransform.transform.position, m_moveTime);
         transform.DORotateQuaternion(saveTransform.transform.rotation, m_moveTime);
         zoomNow = false;
-        Panel.SetActive(true);
-        Panel2.SetActive(false);
+        raycastController.saveBoxCollider.enabled = true;
+    }
+
+    public void OpenClose()
+    {
+        itemflag = !itemflag;
     }
 }
 
