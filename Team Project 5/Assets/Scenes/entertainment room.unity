@@ -1876,7 +1876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: reFirstDoor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1926,9 +1926,13 @@ PrefabInstance:
       propertyPath: m_PlayAutomatically
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+      propertyPath: m_TagString
+      value: reFirstDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: reFirstDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
@@ -3669,6 +3673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7df6972dda1f244ead7df35c5bf8260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enterRoom: entertainment room
+  firstRoom: Public TestScene
   m_debugRayLength: 100
   m_debugRayColorOnHit: {r: 1, g: 0, b: 0, a: 1}
   layerMask:
@@ -3685,7 +3691,6 @@ MonoBehaviour:
   - {fileID: 582916021}
   cameraObject: {fileID: 1619517508}
   m_moveTime: 1
-  gamemanajer: {fileID: 654767739}
   Panel: {fileID: 0}
   m_timer: 0
 --- !u!1001 &674043204
@@ -8700,11 +8705,15 @@ MonoBehaviour:
   - {fileID: 1743599102}
   - {fileID: 1598232343}
   - {fileID: 1044366024}
+  m_cameraPoints2: []
+  m_cameraPoints3: []
+  m_cameraPoints4: []
   m_moveTime: 1
   Panel: {fileID: 212062293}
   Panel2: {fileID: 838463694}
   m_cameraPinPoint: {fileID: 1472257425}
   itemBarPossible: 1
+  info: 1
 --- !u!1001 &1638003434
 PrefabInstance:
   m_ObjectHideFlags: 0

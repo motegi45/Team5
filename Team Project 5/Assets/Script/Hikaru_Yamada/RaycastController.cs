@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 説明:
@@ -13,6 +14,8 @@ using DG.Tweening;
 /// </summary>
 public class RaycastController : MonoBehaviour
 {
+    [SerializeField] string enterRoom;
+    [SerializeField] string firstRoom;
     /// <summary>Ray が何にも当たらなかった時、Scene に表示する Ray の長さ</summary>
     [SerializeField] float m_debugRayLength = 100f;
     /// <summary>Ray が何かに当たった時に Scene に表示する Ray の色</summary>
@@ -35,7 +38,6 @@ public class RaycastController : MonoBehaviour
     [SerializeField] float m_moveTime = 1.0f;
     Transform zoomBefore;
     bool zoomNew = false;
-    [SerializeField] GameObject gamemanajer;
     [SerializeField] GameObject Panel;
     CameraMovementController cameraMovementController;
     //opensystem opensystem;
@@ -152,19 +154,20 @@ public class RaycastController : MonoBehaviour
                             var zoomPoint = zoomObject.transform;
                             cameraMovementController.Zoom(zoomPoint);
                         }
-                        // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
-                        //zoomBefore = new Transform(cameraObject.transform);
-                        
-                }
-                
-                
-                
+                    // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
+                    //zoomBefore = new Transform(cameraObject.transform);
 
-                // m_marker がアサインされていたら、それを移動する
-                /*if (m_marker)
+                }
+
+                if (hit.collider.tag == "reFirstDoor")
                 {
-                    m_marker.transform.position = hit.point + m_markerOffset;
-                }*/
+                    Scenechange(firstRoom);
+                }
+
+                if (hit.collider.tag == "enterDoor")
+                {
+                    Scenechange(enterRoom);
+                }
             }
             else
             {
@@ -188,9 +191,14 @@ public class RaycastController : MonoBehaviour
         GameObject.Find("CanvasWorld").transform.Find("OpenDoorButton").gameObject.SetActive(true);
     }
 
-   
+    public void Scenechange(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 
-    
+
+
+
 
 }
 
