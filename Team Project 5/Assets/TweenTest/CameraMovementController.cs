@@ -35,11 +35,12 @@ public class CameraMovementController : MonoBehaviour
     {
         raycastController = gameManager.GetComponent<RaycastController>();
         var hintsystem = hint.GetComponent<hintsystem>();
-        //Panel2.SetActive(false);
     }
 
     void Update()
     {
+
+        ///カメラの動きを制限
         //テスト用
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -75,7 +76,7 @@ public class CameraMovementController : MonoBehaviour
                 SmoothMove(m_cameraPoints3[2]);
             }
         }
-        //
+        
         if (info == 1)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
