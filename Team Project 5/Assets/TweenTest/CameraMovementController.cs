@@ -39,6 +39,8 @@ public class CameraMovementController : MonoBehaviour
 
     void Update()
     {
+
+        ///カメラの動きを制限
         //テスト用
         if (Input.GetKeyDown(KeyCode.P))
         {
