@@ -9,6 +9,9 @@ TagManager:
   - zoom
   - enterDoor
   - reFirstDoor
+  - "Bi\uFF47Door"
+  - BigDoor
+  - noLinkZoom
   layers:
   - Default
   - TransparentFX

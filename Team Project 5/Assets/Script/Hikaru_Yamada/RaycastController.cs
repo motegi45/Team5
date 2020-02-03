@@ -178,8 +178,9 @@ public class RaycastController : MonoBehaviour
                 {
                     if (cameraMovementController)
                     {
+                        var pointObject = hit.collider.gameObject;
                         var zoomObject = GameObject.Find(hit.collider.gameObject.name + "Point");
-                        saveBoxCollider = zoomObject.GetComponent<BoxCollider>();
+                        saveBoxCollider = pointObject.GetComponent<BoxCollider>();
                         saveBoxCollider.enabled = false;
                         var zoomPoint = zoomObject.transform;
                         cameraMovementController.Zoom(zoomPoint);
