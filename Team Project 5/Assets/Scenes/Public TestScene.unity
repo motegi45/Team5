@@ -651,6 +651,7 @@ RectTransform:
   - {fileID: 1132661205}
   - {fileID: 1757405361}
   - {fileID: 413604882}
+  - {fileID: 135513063}
   - {fileID: 1050282300}
   - {fileID: 1132067821}
   m_Father: {fileID: 0}
@@ -840,13 +841,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1050282300}
-  m_RootOrder: 2
+  m_Father: {fileID: 96933313}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.43, y: 0.93}
   m_AnchorMax: {x: 0.57, y: 0.98}
-  m_AnchoredPosition: {x: 0, y: 227.5}
-  m_SizeDelta: {x: 135.15234, y: 25}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &135513064
 MonoBehaviour:
@@ -3050,7 +3051,7 @@ PrefabInstance:
     - target: {fileID: 838924366466208649, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 838924366466208649, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
@@ -6647,9 +6648,8 @@ RectTransform:
   m_Children:
   - {fileID: 1804941540}
   - {fileID: 219689278}
-  - {fileID: 135513063}
   m_Father: {fileID: 96933313}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9181,6 +9181,7 @@ MonoBehaviour:
   panelIB: {fileID: 1781229632}
   button1: {fileID: 1022334969}
   button2: {fileID: 1132661204}
+  buttonUp: {fileID: 135513062}
   itemflag: 0
 --- !u!81 &1512491405
 AudioListener:

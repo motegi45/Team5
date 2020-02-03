@@ -28,6 +28,7 @@ public class CameraMovementController : MonoBehaviour
     [SerializeField] GameObject panelIB;
     [SerializeField] GameObject button1;
     [SerializeField] GameObject button2;
+    [SerializeField] GameObject buttonUp;
     public bool itemflag = false;
     /// <summary>まで</summary>
 
@@ -145,12 +146,7 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (!zoomNow && !upFlag)
-                {
-                    saveTransform = m_cameraPoints2[m_cameraPointIndex];
-                    SmoothMove(m_cameraPinPoint);
-                    upFlag = true;
-                }
+                
                     
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -191,12 +187,7 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (!zoomNow && !upFlag)
-                {
-                    saveTransform = m_cameraPoints3[m_cameraPointIndex];
-                    SmoothMove(m_cameraPinPoint);
-                    upFlag = true;
-                }
+                
                     
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -238,12 +229,7 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (!zoomNow && !upFlag)
-                {
-                    saveTransform = m_cameraPoints4[m_cameraPointIndex];
-                    SmoothMove(m_cameraPinPoint);
-                    upFlag = true;
-                }
+                
                     
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -264,43 +250,91 @@ public class CameraMovementController : MonoBehaviour
         {
             OpenClose();
         }
-        if (upFlag == true || zoomNow == true)
+        if (info > 1)
         {
-            Panel.SetActive(false);
-            if (itemflag)
+            if (upFlag == true || zoomNow == true)
             {
-                button2.SetActive(false);
-                button1.SetActive(true);
-                panelIB.SetActive(true);
-                itemBar.SetActive(true);
+                Panel.SetActive(false);
+                buttonUp.SetActive(false);
+                if (itemflag)
+                {
+                    button2.SetActive(false);
+                    button1.SetActive(true);
+                    panelIB.SetActive(true);
+                    itemBar.SetActive(true);
+                }
+                else
+                {
+                    button1.SetActive(false);
+                    button2.SetActive(true);
+                    panelIB.SetActive(false);
+                    itemBar.SetActive(false);
+                }
             }
             else
             {
-                button1.SetActive(false);
-                button2.SetActive(true);
-                panelIB.SetActive(false);
-                itemBar.SetActive(false);
+                Panel.SetActive(true);
+                buttonUp.SetActive(false);
+                if (itemflag)
+                {
+                    button2.SetActive(false);
+                    button1.SetActive(false);
+                    panelIB.SetActive(true);
+                    itemBar.SetActive(true);
+                }
+                else
+                {
+                    button1.SetActive(false);
+                    button2.SetActive(false);
+                    panelIB.SetActive(false);
+                    itemBar.SetActive(false);
+                }
+
             }
         }
         else
         {
-            Panel.SetActive(true);
-            if (itemflag)
+            if (upFlag == true || zoomNow == true)
             {
-                button2.SetActive(false);
-                button1.SetActive(false);
-                panelIB.SetActive(true);
-                itemBar.SetActive(true);
+                buttonUp.SetActive(false);
+                Panel.SetActive(false);
+                if (itemflag)
+                {
+                    button2.SetActive(false);
+                    button1.SetActive(true);
+                    panelIB.SetActive(true);
+                    itemBar.SetActive(true);
+                }
+                else
+                {
+                    button1.SetActive(false);
+                    button2.SetActive(true);
+                    panelIB.SetActive(false);
+                    itemBar.SetActive(false);
+                }
             }
             else
             {
-                button1.SetActive(false);
-                button2.SetActive(false);
-                panelIB.SetActive(false);
-                itemBar.SetActive(false);
-            }
+                buttonUp.SetActive(true);
+                Panel.SetActive(true);
+                if (itemflag)
+                {
+                    button2.SetActive(false);
+                    button1.SetActive(false);
+                    panelIB.SetActive(true);
+                    itemBar.SetActive(true);
+                }
+                else
+                {
+                    button1.SetActive(false);
+                    button2.SetActive(false);
+                    panelIB.SetActive(false);
+                    itemBar.SetActive(false);
+                }
 
+            }
         }
+        
     }
     //ボタン用の関数
     public void RightButton()
