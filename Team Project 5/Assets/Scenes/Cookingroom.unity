@@ -428,7 +428,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260415385}
         m_MethodName: DownButton
         m_Mode: 1
         m_Arguments:
@@ -1072,10 +1072,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cameraPoints:
-  - {fileID: 186391936}
-  - {fileID: 2029856567}
   - {fileID: 1281019726}
   - {fileID: 1426700224}
+  - {fileID: 186391936}
+  - {fileID: 2029856567}
   m_cameraPoints2: []
   m_cameraPoints3: []
   m_cameraPoints4: []
@@ -1337,13 +1337,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350981688}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0.58, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533452615}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!114 &352184749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,7 +2262,7 @@ GameObject:
   - component: {fileID: 521145414}
   - component: {fileID: 521145413}
   m_Layer: 0
-  m_Name: DeskCollider
+  m_Name: Desk
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2288,12 +2288,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521145412}
-  m_LocalRotation: {x: 0.1564345, y: 0, z: 0, w: 0.98768836}
-  m_LocalPosition: {x: 0.2, y: 1.63, z: -2.6}
+  m_LocalRotation: {x: -0, y: -0.8788171, z: 0.47715878, w: 0}
+  m_LocalPosition: {x: -0.24000007, y: -0.06293213, z: -0.07771473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 18, y: 0, z: 0}
 --- !u!1 &531723678
 GameObject:
@@ -2848,7 +2848,7 @@ GameObject:
   - component: {fileID: 621892158}
   - component: {fileID: 621892159}
   m_Layer: 0
-  m_Name: GasCollider1
+  m_Name: Gas1
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2861,12 +2861,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621892157}
-  m_LocalRotation: {x: 0.18301274, y: 0.6830127, z: -0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: -2.37, y: 1.63, z: -6.1}
+  m_LocalRotation: {x: -0.055478923, y: -0.58274525, z: 0.4005097, w: 0.704927}
+  m_LocalPosition: {x: 2.3300004, y: 2.1396894, z: 2.642297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: 90, z: 0}
 --- !u!65 &621892159
 BoxCollider:
@@ -3008,6 +3008,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 87.8, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &656908313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656908314}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656908314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656908313}
+  m_LocalRotation: {x: 0, y: 0.94264156, z: -0.33380687, w: 0}
+  m_LocalPosition: {x: -0.04, y: 1.63, z: -2.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1681337455}
+  - {fileID: 1874314014}
+  - {fileID: 1653059422}
+  - {fileID: 521145414}
+  - {fileID: 621892158}
+  - {fileID: 792182959}
+  - {fileID: 966406161}
+  - {fileID: 2048951489}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671519545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,7 +3948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 729397593}
   m_Layer: 0
-  m_Name: TablePoint1
+  m_Name: Table1Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4253,7 +4291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787447215}
   m_Layer: 0
-  m_Name: TablePoint2
+  m_Name: Table2Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4284,7 +4322,7 @@ GameObject:
   - component: {fileID: 792182959}
   - component: {fileID: 792182960}
   m_Layer: 0
-  m_Name: GasCollider2
+  m_Name: Gas2
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4297,12 +4335,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792182958}
-  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: 2.37, y: 1.63, z: -6.1}
+  m_LocalRotation: {x: 0.055478923, y: -0.58274525, z: 0.4005097, w: -0.704927}
+  m_LocalPosition: {x: -2.4100003, y: 2.1396894, z: 2.642297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
 --- !u!65 &792182960
 BoxCollider:
@@ -5215,7 +5253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956481325}
   m_Layer: 0
-  m_Name: GasPoint2
+  m_Name: Gas2Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5235,36 +5273,6 @@ Transform:
   m_Father: {fileID: 1533452615}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
---- !u!1 &962025269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 962025270}
-  m_Layer: 0
-  m_Name: Upcollider
-  m_TagString: zoom
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &962025270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962025269}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.58, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &966406160
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,7 +5284,7 @@ GameObject:
   - component: {fileID: 966406161}
   - component: {fileID: 966406162}
   m_Layer: 0
-  m_Name: TableCollider1
+  m_Name: Table1
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5289,12 +5297,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966406160}
-  m_LocalRotation: {x: 0.10451704, y: -0.69933987, z: 0.10451704, w: 0.69933987}
-  m_LocalPosition: {x: -1.6, y: 1.87, z: -2.64}
+  m_LocalRotation: {x: 0.13492234, y: -0.62433827, z: 0.33196652, w: -0.6941153}
+  m_LocalPosition: {x: 1.5600005, y: 0.14875585, z: -0.19766563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 17, y: -90, z: 0}
 --- !u!65 &966406162
 BoxCollider:
@@ -7151,7 +7159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260415385}
         m_MethodName: DownButton
         m_Mode: 1
         m_Arguments:
@@ -8469,7 +8477,7 @@ GameObject:
   - component: {fileID: 1653059422}
   - component: {fileID: 1653059421}
   m_Layer: 0
-  m_Name: FreezersCollider
+  m_Name: Freezers
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8495,12 +8503,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653059420}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.66, y: 1.5, z: -2.56}
+  m_LocalRotation: {x: -0.23603709, y: -0.6665482, z: 0.23603709, w: 0.6665482}
+  m_LocalPosition: {x: -0.70000017, y: -0.1891339, z: -0.026988894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1681337453
 GameObject:
@@ -8513,7 +8521,7 @@ GameObject:
   - component: {fileID: 1681337455}
   - component: {fileID: 1681337454}
   m_Layer: 0
-  m_Name: SinkCollider
+  m_Name: Sink
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8539,12 +8547,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681337453}
-  m_LocalRotation: {x: 0, y: 0.94264156, z: -0.33380687, w: 0}
-  m_LocalPosition: {x: -0.04, y: 1.63, z: -2.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 39, y: 180, z: 0}
 --- !u!1 &1745723094
 GameObject:
@@ -13614,7 +13622,7 @@ GameObject:
   - component: {fileID: 1874314014}
   - component: {fileID: 1874314013}
   m_Layer: 0
-  m_Name: DeviceSinkCollider
+  m_Name: DeviceSink
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13640,12 +13648,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874314012}
-  m_LocalRotation: {x: 0.14097439, y: 0.69291145, z: -0.14097439, w: 0.69291145}
-  m_LocalPosition: {x: 1.83, y: 2.3, z: -7.66}
+  m_LocalRotation: {x: -0.09841026, y: -0.60610884, z: 0.36418688, w: 0.7002253}
+  m_LocalPosition: {x: -1.8700005, y: 3.642117, z: 3.4330015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 23, y: 90, z: 0}
 --- !u!1 &1889128580
 GameObject:
@@ -14245,7 +14253,7 @@ GameObject:
   - component: {fileID: 2048951489}
   - component: {fileID: 2048951490}
   m_Layer: 0
-  m_Name: TableCollider2
+  m_Name: Table2
   m_TagString: zoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14258,12 +14266,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048951488}
-  m_LocalRotation: {x: 0.10451704, y: -0.69933987, z: 0.10451704, w: 0.69933987}
-  m_LocalPosition: {x: -1.6, y: 1.87, z: -7.03}
+  m_LocalRotation: {x: 0.13492234, y: -0.62433827, z: 0.33196652, w: -0.6941153}
+  m_LocalPosition: {x: 1.5600005, y: 2.9114726, z: 3.2140064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 656908314}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 17, y: -90, z: 0}
 --- !u!65 &2048951490
 BoxCollider:
@@ -14394,7 +14402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120234430}
   m_Layer: 0
-  m_Name: GasPoint1
+  m_Name: Gas1Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
