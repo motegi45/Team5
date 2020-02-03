@@ -170,8 +170,6 @@ public class RaycastController : MonoBehaviour
                             var zoomPoint = zoomObject.transform;
                             cameraMovementController.Zoom(zoomPoint);
                         }
-                    // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
-                    //zoomBefore = new Transform(cameraObject.transform);
 
                 }
                 if (hit .collider.tag == "noLinkZoom")
@@ -197,9 +195,23 @@ public class RaycastController : MonoBehaviour
                     Scenechange(enterRoom);
                 }
 
+                if (hit.collider.name == "WaterCol1")
+                {
+                    var waterObject = hit.collider.gameObject;
+                    saveBoxCollider = waterObject.GetComponent<BoxCollider>();
+                    saveBoxCollider.enabled = false;
+                    if (sinkWater1.m_ToWaterOrDrainage == true)
+                    {
+                        sinkWater1.ToWaterOrDrainage(false);
+                    }
+                    else if (sinkWater1.m_ToWaterOrDrainage == false)
+                    {
+                        sinkWater1.ToWaterOrDrainage(true);
+                    }
+                }
                 if (hit.collider.name == "Sink_1")
                 {
-                    Debug.Log(sinkWater1);
+                    saveBoxCollider.enabled = true;
                     if (sinkWater1.m_ToWaterOrDrainage == true)
                     {
                         sinkWater1.ToWaterOrDrainage(false);
