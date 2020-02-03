@@ -155,7 +155,11 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (upFlag)
+                if (zoomNow)
+                {
+                    ZoomOut();
+                }
+                else if (upFlag)
                 {
                     SmoothMove(saveTransform);
                     upFlag = false;
@@ -197,7 +201,11 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (upFlag)
+                if (zoomNow)
+                {
+                    ZoomOut();
+                }
+                else if (upFlag)
                 {
                     SmoothMove(saveTransform);
                     upFlag = false;
@@ -240,7 +248,11 @@ public class CameraMovementController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (upFlag)
+                if (zoomNow)
+                {
+                    ZoomOut();
+                }
+                else if (upFlag)
                 {
                     SmoothMove(saveTransform);
                     upFlag = false;
@@ -374,13 +386,18 @@ public class CameraMovementController : MonoBehaviour
 
     public void DownButton()
     {
-        if (info == 1)
+        if (zoomNow)
+        {
+            ZoomOut();
+        }
+        else if (info == 1)
         {
             if (upFlag)
             {
                 SmoothMove(saveTransform);
                 upFlag = false;
             }
+
         }
         else if (info == 2)
         {
