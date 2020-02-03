@@ -45,7 +45,10 @@ public class CameraMovementController : MonoBehaviour
         //テスト用
         if (Input.GetKeyDown(KeyCode.P))
         {
-            info++;
+            if(info < 4)
+            {
+                info++;
+            }
             if (info == 2)
             {
                 SmoothMove(m_cameraPoints2[2]);
@@ -63,7 +66,10 @@ public class CameraMovementController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            info--;
+            if (info > 1)
+            {
+                info--;
+            }
             if (info == 1)
             {
                 SmoothMove(m_cameraPoints[2]);
