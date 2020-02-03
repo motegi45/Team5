@@ -5,7 +5,7 @@ using UnityEngine.UI;//この宣言が必要
 
 public class hintsystem : MonoBehaviour
 {
-    [SerializeField] GameObject buttonPanel;
+    [SerializeField] GameObject button;
     [SerializeField] Text hintText;
     [SerializeField] GameObject Panel;
     [SerializeField] GameObject itemBar;
@@ -31,12 +31,20 @@ public class hintsystem : MonoBehaviour
     public void hint()
     {
         int i = 0;
-        
-
-        while (i < 8)
+        itemScript.ItemList();
+        int a = 0;
+        //var a = itemScript.allItemList.Length;
+        foreach (var item in itemScript.allItemList)
+        {
+            if (item != null)
+            {
+                a++;
+            }
+        }
+        while (i < a)
         {
 
-            if (itemScript.allItemList[i].name == "HintPlane" || itemScript.allItemList[i].name == "HintPlane2")
+            if (itemScript.allItemList[i].name == "HintPlane" || itemScript.allItemList[i].name == "HintPlane (1)")
             {
                 item++;
             }
@@ -60,6 +68,7 @@ public class hintsystem : MonoBehaviour
                         break;
                     case 1:
                         hintText.text = "ビリヤード台は2つあったな";
+
                         break;
                     case 2:
                         hintText.text = "なんか色が似てる？";
@@ -74,7 +83,7 @@ public class hintsystem : MonoBehaviour
                 hintText.text = "????????????????????????????????????????????????????????????????????????????????????????";
                 break;
         }
-        buttonPanel.SetActive(false);
+        button.SetActive(false);
         Panel.SetActive(true);
         
         
@@ -83,6 +92,6 @@ public class hintsystem : MonoBehaviour
     public void HintClose()
     {
         Panel.SetActive(false);
-        buttonPanel.SetActive(true);
+        button.SetActive(true);
     }
 }
