@@ -54,7 +54,6 @@ public class RaycastController : MonoBehaviour
 
     void Start()
     {
-        
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
         if (sink1)
         {
@@ -174,6 +173,17 @@ public class RaycastController : MonoBehaviour
                     // zoomBeforePosition = new Vector3(beforeTransformPosition);*/
                     //zoomBefore = new Transform(cameraObject.transform);
 
+                }
+                if (hit .collider.tag == "noLinkZoom")
+                {
+                    if (cameraMovementController)
+                    {
+                        var zoomObject = GameObject.Find(hit.collider.gameObject.name + "Point");
+                        saveBoxCollider = zoomObject.GetComponent<BoxCollider>();
+                        saveBoxCollider.enabled = false;
+                        var zoomPoint = zoomObject.transform;
+                        cameraMovementController.Zoom(zoomPoint);
+                    }
                 }
 
                 if (hit.collider.tag == "reFirstDoor")
