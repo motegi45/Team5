@@ -397,6 +397,7 @@ public class CameraMovementController : MonoBehaviour
                 SmoothMove(saveTransform);
                 upFlag = false;
             }
+
         }
         else if (info == 2)
         {
