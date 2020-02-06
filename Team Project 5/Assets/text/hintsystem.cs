@@ -33,6 +33,7 @@ public class hintsystem : MonoBehaviour
         int i = 0;
         itemScript.ItemList();
         int a = 0;
+        item = 0;
         //var a = itemScript.allItemList.Length;
         foreach (var item in itemScript.allItemList)
         {
