@@ -47,6 +47,7 @@ public class RaycastController : MonoBehaviour
     [SerializeField] float m_timer;
     public BoxCollider saveBoxCollider;
 
+
     [SerializeField] GameObject CookingRoomObject;
     CookingRoomScript cookingRoomScript;
     /// <summary>シンク1の水が溜まっているか</summary>
@@ -66,6 +67,13 @@ public class RaycastController : MonoBehaviour
 
     
 
+    [SerializeField] GameObject hintObject;
+    public BoxCollider saveBoxCollider;
+    hintsystem hintsystem;
+    bool left = false;
+    bool right = false;
+
+
     void Start()
     {
         script = itemBar.GetComponent<ItemBar>();
@@ -76,6 +84,7 @@ public class RaycastController : MonoBehaviour
         {
             Panel.SetActive(false);
         }
+
         if (CookingRoomObject)
         {
             cookingRoomScript = CookingRoomObject.GetComponent<CookingRoomScript>();
@@ -84,6 +93,10 @@ public class RaycastController : MonoBehaviour
 
         }
         
+
+        hintsystem = hintObject.GetComponent<hintsystem>();
+
+
     }
 
     void Update()
@@ -259,7 +272,28 @@ public class RaycastController : MonoBehaviour
                     
                     
                 }
-                
+
+                if (hit.collider.name == "LeftBilliardsTableCamera")
+                {
+                    if (!left)
+                    {
+                        hintsystem.Branch++;
+                        left = true;
+                    }
+                }
+                if (hit.collider.name == "RightBilliardsTableCamera")
+                {
+                    if (!right)
+                    {
+                        hintsystem.Branch++;
+                        right = true;
+                    }
+                }
+                if (hit.collider.name == "TableCamera")
+                {
+                    hintsystem.tableFlag = true;
+                }
+
             }
             else
             {
