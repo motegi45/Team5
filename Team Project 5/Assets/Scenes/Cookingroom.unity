@@ -1567,20 +1567,14 @@ MonoBehaviour:
   - {fileID: 139224400}
   - {fileID: 641824008}
   - {fileID: 1542494660}
-  canUseItem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   allItem:
   - {fileID: 0}
   raycast: {fileID: 1803885353}
   hint: {fileID: 0}
+  allItemListPort: []
   allItemList: []
+  selectedPort: {fileID: 0}
+  selectedItem: {fileID: 0}
   selected: 8
   btns:
   - {fileID: 1169480587}
@@ -1894,7 +1888,7 @@ GameObject:
   - component: {fileID: 420729188}
   - component: {fileID: 420729187}
   m_Layer: 0
-  m_Name: Water (2)
+  m_Name: Water3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2838,6 +2832,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582150651}
   m_CullTransparentMesh: 0
+--- !u!1 &609934783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609934784}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609934784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609934783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.12, y: 0.761, z: -9.346}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621892157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3319,6 +3343,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 375723838}
+  - {fileID: 1718325989}
   - {fileID: 1627035010}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -4837,7 +4862,7 @@ GameObject:
   - component: {fileID: 883459114}
   m_Layer: 0
   m_Name: FlamePlate
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4854,7 +4879,7 @@ Transform:
   m_LocalScale: {x: 0.20000012, y: 0.05, z: 0.20000012}
   m_Children: []
   m_Father: {fileID: 1651375481}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!65 &883459111
 BoxCollider:
@@ -5244,50 +5269,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &945201839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 945201841}
-  - component: {fileID: 945201840}
-  m_Layer: 0
-  m_Name: WaterCol1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &945201840
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945201839}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.05, z: 0.8}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &945201841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945201839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.591, y: 0.854, z: -3.731}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956481324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,7 +5665,7 @@ GameObject:
   - component: {fileID: 1153137363}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5698,7 +5679,7 @@ MeshCollider:
   m_GameObject: {fileID: 1153137362}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -7296,7 +7277,7 @@ GameObject:
   - component: {fileID: 1468145735}
   m_Layer: 0
   m_Name: KeyPlate
-  m_TagString: Item
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8167,7 +8148,7 @@ RectTransform:
   - {fileID: 641824009}
   - {fileID: 1542494661}
   m_Father: {fileID: 679258979}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1.2}
@@ -8503,8 +8484,8 @@ Transform:
   m_Children:
   - {fileID: 2139294940}
   - {fileID: 552288970}
-  - {fileID: 883459110}
   - {fileID: 2134693709}
+  - {fileID: 883459110}
   - {fileID: 1468145734}
   - {fileID: 343318638}
   - {fileID: 115448591}
@@ -8599,6 +8580,102 @@ Transform:
   m_Father: {fileID: 656908314}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -39, y: 0, z: 0}
+--- !u!1 &1718325988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718325989}
+  - component: {fileID: 1718325990}
+  m_Layer: 5
+  m_Name: Area Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1718325989
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718325988}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 481}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 679258979}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1.2}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!108 &1718325990
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718325988}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 3
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1745723094
 GameObject:
   m_ObjectHideFlags: 0
@@ -13437,9 +13514,15 @@ MonoBehaviour:
   m_moveTime: 1
   Panel: {fileID: 0}
   m_timer: 0
-  sink1: {fileID: 1459505150774346}
-  sink2: {fileID: 1459505639848578}
   saveBoxCollider: {fileID: 0}
+  CookingRoomObject: {fileID: 566070973}
+  sink1water: 0
+  sink2water: 0
+  flame: 0
+  freezer1: 0
+  freezer2: 0
+  panelSelect: 0
+  selectedPanel: {fileID: 0}
 --- !u!1 &1859178057
 GameObject:
   m_ObjectHideFlags: 0
@@ -13713,8 +13796,8 @@ GameObject:
   - component: {fileID: 1889128583}
   - component: {fileID: 1889128582}
   m_Layer: 0
-  m_Name: Water (1)
-  m_TagString: Untagged
+  m_Name: Water2
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13742,7 +13825,7 @@ MeshCollider:
   m_GameObject: {fileID: 1889128580}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -14545,7 +14628,7 @@ Transform:
   - {fileID: 2134693711}
   - {fileID: 2134693705}
   m_Father: {fileID: 1651375481}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &2134693711
 Transform:
@@ -18942,7 +19025,7 @@ MeshCollider:
   m_GameObject: {fileID: 1459505150774346}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -18956,7 +19039,7 @@ MeshCollider:
   m_GameObject: {fileID: 1459505639848578}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -18970,7 +19053,7 @@ MeshCollider:
   m_GameObject: {fileID: 1459505771559523}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14

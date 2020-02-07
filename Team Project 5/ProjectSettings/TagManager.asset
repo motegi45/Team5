@@ -12,6 +12,8 @@ TagManager:
   - "Bi\uFF47Door"
   - BigDoor
   - noLinkZoom
+  - Water
+  - Panel
   layers:
   - Default
   - TransparentFX

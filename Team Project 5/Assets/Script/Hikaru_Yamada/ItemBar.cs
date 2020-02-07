@@ -14,7 +14,7 @@ public class ItemBar : MonoBehaviour
     ///<summary>ポート</summary>
     [SerializeField] public GameObject[] ports;
     /// <summary>現在使用可能なアイテム一覧</summary> 
-    [SerializeField] public  GameObject[] canUseItem ;
+    //[SerializeField] public  GameObject[] canUseItem ;
     /// <summary>ゲーム中に登場するアイテム一覧</summary>
     [SerializeField] public GameObject[] allItem;
     //0 = 日記1
@@ -23,7 +23,10 @@ public class ItemBar : MonoBehaviour
     public GameObject[] allItemListPort = new GameObject[8];
     public GameObject[] allItemList = new GameObject[8];
 
-
+    /// <summary>現在選択中のポート</summary>
+    public GameObject selectedPort;
+    ///<summary>現在選択中のアイテム</summary>
+    public GameObject selectedItem;
     /// <summary>現在選択中かどうかを判定する<summary>
     public int selected = 8;
 
@@ -48,7 +51,7 @@ public class ItemBar : MonoBehaviour
 
     private void Start()
     {
-        var hintsystem = hint.GetComponent<hintsystem>();
+        //var hintsystem = hint.GetComponent<hintsystem>();
     }
 
     void Update()
@@ -67,6 +70,8 @@ public class ItemBar : MonoBehaviour
                 i++;
             }
             selected = 8;
+            selectedItem = null;
+            selectedPort = null;
         }
         else
         {
@@ -80,10 +85,10 @@ public class ItemBar : MonoBehaviour
             btns[number].image.color = btnColor2;
             selected = number;
         }
-        GameObject selectedPort = GameObject.Find("Port" + number);
+        selectedPort = GameObject.Find("Port" + number);
         if (0 < selectedPort.transform.childCount)
         {
-            GameObject selectedItem = selectedPort.transform.GetChild(0).gameObject;
+            selectedItem = selectedPort.transform.GetChild(0).gameObject;
             if (selectedItem.name == "Diary1")
             {
                 if (diaryOpen)
@@ -122,7 +127,19 @@ public class ItemBar : MonoBehaviour
                 {
                     raycastComp.keySelect2 = true;
                 }
-
+            }
+            if (selectedItem.tag == "Panel")
+            {
+                var raycastComp = raycast.GetComponent<RaycastController>();
+                if (raycastComp.panelSelect)
+                {
+                    raycastComp.panelSelect = false;
+                }
+                else
+                {
+                    raycastComp.panelSelect = true;
+                    raycastComp.selectedPanel = selectedItem;
+                }
             }
         }
         
@@ -130,12 +147,18 @@ public class ItemBar : MonoBehaviour
 
     public void DeleteItem()
     {
-        GameObject selectedport = GameObject.Find("Port" + selected);
-        Destroy(selectedport.transform.GetChild(0).gameObject);
+        selectedPort = GameObject.Find("Port" + selected);
+        Destroy(selectedPort.transform.GetChild(0).gameObject);
         var raycastComp = raycast.GetComponent<RaycastController>();
         raycastComp.keySelect = false;
     }
 
+    public void UseItem()
+    {
+        selectedPort = GameObject.Find("Port" + selected);
+        selectedItem = selectedPort.transform.GetChild(0).gameObject;
+        selectedItem.transform.parent = null;
+    }
     public void ItemList()
     {
         int i = 0;
