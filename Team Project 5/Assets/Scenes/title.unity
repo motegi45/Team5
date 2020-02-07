@@ -470,14 +470,14 @@ RectTransform:
   m_GameObject: {fileID: 759517324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0640905, y: 2.0640905, z: 2.0640905}
   m_Children: []
   m_Father: {fileID: 458188201}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -326.75, y: 183.75}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -5}
   m_SizeDelta: {x: 653.5, y: 367.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &759517326
@@ -533,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765023814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1059,7 +1059,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35014f307cc131a4f8c9647ee39d5ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   sceneName: Pulic TestScene
 --- !u!114 &1168524281
 MonoBehaviour:
@@ -1074,7 +1073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 898397541}
-
 --- !u!1 &1203324650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1640792998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1242,7 +1240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1740699485
 RectTransform:
   m_ObjectHideFlags: 0
