@@ -68,7 +68,6 @@ public class RaycastController : MonoBehaviour
     
 
     [SerializeField] GameObject hintObject;
-    public BoxCollider saveBoxCollider;
     hintsystem hintsystem;
     bool left = false;
     bool right = false;
