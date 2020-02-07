@@ -24,8 +24,11 @@ public class DeviceSink : MonoBehaviour
     private void FixedUpdate()
     {
         //この場所で沈ませる
-        m_SunkItems.transform.position = SinkingPlace;
-
+        if(m_SunkItems != null)
+        {
+            m_SunkItems.transform.position = SinkingPlace;
+        }
+        
         GimmickRelease();
 
         StartingTheDevice();

@@ -29,6 +29,7 @@ public class RaycastController : MonoBehaviour
     [SerializeField] GameObject bigDoor1;
     [SerializeField] GameObject bigDoor2;
     [SerializeField] GameObject itemBar;
+    ItemBar script;
     [SerializeField] GameObject messageWindow;
     /// <summary>ここに GameObject を設定すると、飛ばした Ray が何かに当たった時にそこに m_marker を移動する</summary>
     //[SerializeField] GameObject m_marker;
@@ -44,31 +45,44 @@ public class RaycastController : MonoBehaviour
     //opensystem opensystem;
     bool clear = false;
     [SerializeField] float m_timer;
-
-
-    [SerializeField] GameObject sink1;
-    SinkWater sinkWater1;
-    [SerializeField] GameObject sink2;
-    SinkWater sinkWater2;
     public BoxCollider saveBoxCollider;
+
+    [SerializeField] GameObject CookingRoomObject;
+    CookingRoomScript cookingRoomScript;
+    /// <summary>シンク1の水が溜まっているか</summary>
+    public bool sink1water;
+    /// <summary>シンク2の水が溜まっているか</summary>
+    public bool sink2water;
+    /// <summary>ガスコンロがついているかどうか</summary>
+    public bool flame;
+    /// <summary>冷蔵庫1が開いているかどうか</summary>
+    public bool freezer1;
+    /// <summary>冷蔵庫2が開いているかどうか</summary>
+    public bool freezer2;
+    /// <summary>パネル選択中</summary>
+    public bool panelSelect;
+    /// <summary>選択中のアイテム名</summary>
+    public GameObject selectedPanel;
+
+    
 
     void Start()
     {
+        script = itemBar.GetComponent<ItemBar>();
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
-        if (sink1)
-        {
-            sinkWater1 = sink1.GetComponent<SinkWater>();
-        }
-        if (sink2)
-        {
-            sinkWater2 = sink2.GetComponent<SinkWater>();
-        }
+        
         //opensystem = gamemanajer.GetComponent<opensystem>();
         if (Panel)
         {
             Panel.SetActive(false);
         }
-        
+        if (CookingRoomObject)
+        {
+            cookingRoomScript = CookingRoomObject.GetComponent<CookingRoomScript>();
+            sink1water = true;
+            sink2water = true;
+
+        }
         
     }
 
@@ -90,27 +104,29 @@ public class RaycastController : MonoBehaviour
                 // Ray が当たった時は、当たった座標まで赤い線を引く
                 Debug.DrawLine(ray.origin, hit.point, m_debugRayColorOnHit);
                 
-                if (hit.collider.tag == "Item")
+                if (hit.collider.tag == "Item" || hit.collider.tag == "Panel")
                 {
-                    var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
-                    var script = itemBar.GetComponent<ItemBar>();
-
+                    //var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
                     var itemObject = hit.collider.gameObject;
-                    var itemScript = itemObject.GetComponent<ThisInfo>();
+                    //var itemScript = itemObject.GetComponent<ThisInfo>();
 
                     int i = 0;
-                    while(script.canUseItem[i] != null)
+                    while(script.ports[i].transform.childCount > 0)
                     {
                         i++;
                     }
                    
                     var ParentPort = GameObject.Find("Port" + i);
-                    script.canUseItem[i] = itemObject;
+                    //script.canUseItem[i] = itemObject;
                     var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                     messageText.text = itemObject.name + "を入手した。";
                     messageWindow.SetActive(true);
-                        itemObject.transform.parent = ParentPort.transform;
-                        itemObject.transform.position = ParentPort.transform.position;
+                    if (itemObject.transform.position == new Vector3 (4.12f,0.761f,-9.346f))
+                    {
+                        cookingRoomScript.DeviceSink();
+                    }
+                    itemObject.transform.parent = ParentPort.transform;
+                    itemObject.transform.position = ParentPort.transform.position;
                     
                     if (itemObject.name == "Key1" || itemObject.name == "Key2")
                     {
@@ -121,13 +137,17 @@ public class RaycastController : MonoBehaviour
                     {
                         itemObject.transform.localScale = new Vector3(6, 1, 6);
                         itemObject.transform.Rotate(new Vector3(-90, 0, 0));
-
+                    }
+                    else if (itemObject.tag == "Panel")
+                    {
+                        itemObject.transform.localScale = new Vector3(1, 60f, 60f);
                     }
                     else
                     {
                         itemObject.transform.localScale = new Vector3(135, 135, 135);
                         itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
                     }
+
 
                 }
                 if (hit.collider.tag == "Door")
@@ -184,7 +204,6 @@ public class RaycastController : MonoBehaviour
                         cameraMovementController.Zoom(zoomPoint);
                     }
                 }
-
                 if (hit.collider.tag == "reFirstDoor")
                 {
                     Scenechange(firstRoom);
@@ -194,45 +213,53 @@ public class RaycastController : MonoBehaviour
                 {
                     Scenechange(enterRoom);
                 }
-
-                if (hit.collider.name == "WaterCol1")
+                if (hit.collider.name == "Water")
                 {
-                    var waterObject = hit.collider.gameObject;
-                    saveBoxCollider = waterObject.GetComponent<BoxCollider>();
-                    saveBoxCollider.enabled = false;
-                    if (sinkWater1.m_ToWaterOrDrainage == true)
+                    if (sink1water)
                     {
-                        sinkWater1.ToWaterOrDrainage(false);
+                        cookingRoomScript.Sink_1(false);
+                        sink1water = false;
                     }
-                    else if (sinkWater1.m_ToWaterOrDrainage == false)
+                    else
                     {
-                        sinkWater1.ToWaterOrDrainage(true);
+                        cookingRoomScript.Sink_1(true);
+                        sink1water = true;
                     }
                 }
-                if (hit.collider.name == "Sink_1")
+                if (hit.collider.name == "Water2")
                 {
-                    saveBoxCollider.enabled = true;
-                    if (sinkWater1.m_ToWaterOrDrainage == true)
+                    if (sink2water)
                     {
-                        sinkWater1.ToWaterOrDrainage(false);
+                        cookingRoomScript.Sink_2(false);
+                        sink2water = false;
                     }
-                    else if (sinkWater1.m_ToWaterOrDrainage == false)
+                    else
                     {
-                        sinkWater1.ToWaterOrDrainage(true);
+                        cookingRoomScript.Sink_2(true);
+                        sink2water = true;
                     }
                 }
-
-                if (hit.collider.name == "Sink_2")
+                if (hit.collider.name == "DeviceSink")
                 {
-                    if (sinkWater2.m_ToWaterOrDrainage == true)
+                    if (panelSelect)
                     {
-                        sinkWater2.ToWaterOrDrainage(false);
+                        cookingRoomScript.DeviceSink(selectedPanel);
+                        UseItem();
+                        script.selectedItem.transform.localScale = new Vector3(0.2f,0.05f,0.2f);
+                        //script.selectedItem.transform.Rotate(new Vector3());
+                        //script.selectedItem.transform.localScale = new Vector3();
+                        script.selectedItem = null;
                     }
-                    else if (sinkWater2.m_ToWaterOrDrainage == false)
+                    else
                     {
-                        sinkWater2.ToWaterOrDrainage(true);
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "どうやら水は抜けないようだ";
+                        messageWindow.SetActive(true);
                     }
+                    
+                    
                 }
+                
             }
             else
             {
@@ -261,7 +288,13 @@ public class RaycastController : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-
+    public void UseItem()
+    {
+        script.selectedPort = GameObject.Find("Port" + script.selected);
+        script.selectedItem = script.selectedPort.transform.GetChild(0).gameObject;
+        script.selectedItem.transform.parent = null;
+        //script.selectedItem = null;
+    }
 
 
 
