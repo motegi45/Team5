@@ -45,12 +45,15 @@ public class RaycastController : MonoBehaviour
     bool clear = false;
     [SerializeField] float m_timer;
 
-
+    [SerializeField] GameObject hintObject;
     [SerializeField] GameObject sink1;
     SinkWater sinkWater1;
     [SerializeField] GameObject sink2;
     SinkWater sinkWater2;
     public BoxCollider saveBoxCollider;
+    hintsystem hintsystem;
+    bool left = false;
+    bool right = false;
 
     void Start()
     {
@@ -68,8 +71,8 @@ public class RaycastController : MonoBehaviour
         {
             Panel.SetActive(false);
         }
-        
-        
+        hintsystem = hintObject.GetComponent<hintsystem>();
+
     }
 
     void Update()
@@ -232,6 +235,26 @@ public class RaycastController : MonoBehaviour
                     {
                         sinkWater2.ToWaterOrDrainage(true);
                     }
+                }
+                if (hit.collider.name == "LeftBilliardsTableCamera")
+                {
+                    if (!left)
+                    {
+                        hintsystem.Branch++;
+                        left = true;
+                    }
+                }
+                if (hit.collider.name == "RightBilliardsTableCamera")
+                {
+                    if (!right)
+                    {
+                        hintsystem.Branch++;
+                        right = true;
+                    }
+                }
+                if (hit.collider.name == "TableCamera")
+                {
+                    hintsystem.tableFlag = true;
                 }
             }
             else
