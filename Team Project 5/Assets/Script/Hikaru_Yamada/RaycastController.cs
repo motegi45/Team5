@@ -92,8 +92,11 @@ public class RaycastController : MonoBehaviour
 
         }
         
-
-        hintsystem = hintObject.GetComponent<hintsystem>();
+        if (hintObject)
+        {
+            hintsystem = hintObject.GetComponent<hintsystem>();
+        }
+        
 
 
     }
@@ -259,9 +262,8 @@ public class RaycastController : MonoBehaviour
                         cookingRoomScript.DeviceSink(selectedPanel);
                         UseItem();
                         script.selectedItem.transform.localScale = new Vector3(0.2f,0.05f,0.2f);
-                        //script.selectedItem.transform.Rotate(new Vector3());
-                        //script.selectedItem.transform.localScale = new Vector3();
                         script.selectedItem = null;
+
                     }
                     else
                     {
@@ -269,8 +271,11 @@ public class RaycastController : MonoBehaviour
                         messageText.text = "どうやら水は抜けないようだ";
                         messageWindow.SetActive(true);
                     }
-                    
-                    
+                }
+
+                if (hit.collider.name == "Freezer1")
+                {
+                    cookingRoomScript.Freezer_1OpenOrClose();
                 }
 
                 if (hit.collider.name == "LeftBilliardsTableCamera")

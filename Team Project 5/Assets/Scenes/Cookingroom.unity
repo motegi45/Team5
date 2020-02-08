@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260415385}
         m_MethodName: RightButton
         m_Mode: 1
         m_Arguments:
@@ -7801,7 +7801,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260415385}
         m_MethodName: LeftButton
         m_Mode: 1
         m_Arguments:
@@ -8033,7 +8033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 260415385}
         m_MethodName: UpButton
         m_Mode: 1
         m_Arguments:
@@ -14380,7 +14380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15780,7 +15780,7 @@ GameObject:
   - component: {fileID: 64564244764289535}
   - component: {fileID: 677997942}
   m_Layer: 0
-  m_Name: Freezer
+  m_Name: Freezer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15800,7 +15800,7 @@ GameObject:
   - component: {fileID: 64564244131691302}
   - component: {fileID: 111001516}
   m_Layer: 0
-  m_Name: Freezer
+  m_Name: Freezer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
