@@ -18,6 +18,17 @@ public class SceneSaverCh : MonoBehaviour
     public static bool doa;
     /// <summary></summary>
 
+    //エンターテイメントルームの保持情報
+    /// <summary>ヒントプレート1位置情報</summary>
+    public static Transform hintplate1;
+    /// <summary>ヒントプレート2位置情報</summary>
+    public static Transform hintplate2;
+    /// <summary>金庫の開き情報</summary>
+    public static bool safeOpen;
+
+    //クッキングルームの保持情報
+
+    
 
 
     // Start is called before the first frame update
