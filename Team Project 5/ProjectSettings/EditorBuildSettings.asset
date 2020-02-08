@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/text.unity
     guid: 8f21e2c0c73769a4ab9a46f6f690e198
   - enabled: 1
+    path: Assets/Scenes/Operation Explanation.unity
+    guid: 32fc249c4d709784d93c4babab3b7083
+  - enabled: 1
     path: Assets/Scenes/Public TestScene.unity
     guid: 2855750aaa7fcbe41848640f4becfad8
   - enabled: 1
