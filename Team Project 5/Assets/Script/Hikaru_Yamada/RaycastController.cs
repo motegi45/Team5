@@ -254,7 +254,7 @@ public class RaycastController : MonoBehaviour
                         sink2water = true;
                     }
                 }
-                if (hit.collider.name == "DeviceSink")
+                if (hit.collider.name == "DeviceSinkO")
                 {
                     if (panelSelect)
                     {
@@ -275,10 +275,22 @@ public class RaycastController : MonoBehaviour
                 if (hit.collider.name == "RFAIP_Fridge_Door_Up1")
                 {
                     cookingRoomScript.Freezer_1OpenOrClose();
+                    if (cookingRoomScript.m_Freezer_1.closed)
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "ロックされている";
+                        messageWindow.SetActive(true);
+                    }
                 }
                 if (hit.collider.name == "RFAIP_Fridge_Door_Up2")
                 {
                     cookingRoomScript.Freezer_2OpenOrClose();
+                    if (cookingRoomScript.m_Freezer_2.closed)
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "ロックされている";
+                        messageWindow.SetActive(true);
+                    }
                 }
                 if (hit.collider.name == "LeftBilliardsTableCamera")
                 {
