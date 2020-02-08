@@ -133,6 +133,7 @@ public class RaycastController : MonoBehaviour
                     var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                     messageText.text = itemObject.name + "を入手した。";
                     messageWindow.SetActive(true);
+                    itemObject.layer = LayerMask.NameToLayer("UI");
                     if (itemObject.transform.position == new Vector3 (4.12f,0.761f,-9.346f))
                     {
                         cookingRoomScript.DeviceSink();
@@ -326,6 +327,7 @@ public class RaycastController : MonoBehaviour
         script.selectedPort = GameObject.Find("Port" + script.selected);
         script.selectedItem = script.selectedPort.transform.GetChild(0).gameObject;
         script.selectedItem.transform.parent = null;
+        script.selectedItem.layer = LayerMask.NameToLayer("Default");
         //script.selectedItem = null;
     }
 
