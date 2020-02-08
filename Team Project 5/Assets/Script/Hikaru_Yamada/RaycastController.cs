@@ -75,6 +75,7 @@ public class RaycastController : MonoBehaviour
 
     void Start()
     {
+        panelSelect = false;
         script = itemBar.GetComponent<ItemBar>();
         cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
         
@@ -163,8 +164,6 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.localScale = new Vector3(135, 135, 135);
                         itemObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
                     }
-
-
                 }
                 if (hit.collider.tag == "Door")
                 {
@@ -273,11 +272,14 @@ public class RaycastController : MonoBehaviour
                     }
                 }
 
-                if (hit.collider.name == "Freezer1")
+                if (hit.collider.name == "RFAIP_Fridge_Door_Up1")
                 {
                     cookingRoomScript.Freezer_1OpenOrClose();
                 }
-
+                if (hit.collider.name == "RFAIP_Fridge_Door_Up2")
+                {
+                    cookingRoomScript.Freezer_2OpenOrClose();
+                }
                 if (hit.collider.name == "LeftBilliardsTableCamera")
                 {
                     if (!left)
