@@ -10,8 +10,8 @@ public class CookingRoomScript : MonoBehaviour
     [SerializeField] DeviceSink m_DeviceSink;
     [SerializeField] KeyPlateHole m_KeyPlateHole;
     [SerializeField] KeyPlateHole m_KeyObjectPlateHole;
-    [SerializeField] Freezer m_Freezer_1;
-    [SerializeField] Freezer m_Freezer_2;
+    [SerializeField] public Freezer m_Freezer_1;
+    [SerializeField] public Freezer m_Freezer_2;
 
     /// <summary>
     /// この関数では台のオブジェクトを受け渡し出来ます。

@@ -13865,8 +13865,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.71, y: -0.45, z: 1}
-  m_Center: {x: 0, y: -0.66, z: 2.52}
+  m_Size: {x: 4.6, y: 0.8, z: 1.8}
+  m_Center: {x: 0, y: -0.66, z: 2.6}
 --- !u!4 &1874314014
 Transform:
   m_ObjectHideFlags: 0
@@ -15577,7 +15577,7 @@ GameObject:
   - component: {fileID: 64043105265372319}
   - component: {fileID: 1459505771559524}
   m_Layer: 0
-  m_Name: DeviceSink
+  m_Name: DeviceSinkO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
