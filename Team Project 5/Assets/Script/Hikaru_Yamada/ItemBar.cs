@@ -61,6 +61,7 @@ public class ItemBar : MonoBehaviour
 
     public void OnClick(int number)
     {
+        var raycastComp = raycast.GetComponent<RaycastController>();
         int i = 0;
         if (btns[number].image.color == btnColor2)
         {
@@ -72,6 +73,7 @@ public class ItemBar : MonoBehaviour
             selected = 8;
             selectedItem = null;
             selectedPort = null;
+            
         }
         else
         {
@@ -105,7 +107,6 @@ public class ItemBar : MonoBehaviour
             }
             if (selectedItem.name == "Key1")
             {
-                var raycastComp = raycast.GetComponent<RaycastController>();
                 if (raycastComp.keySelect)
                 {
                     raycastComp.keySelect = false;
@@ -118,7 +119,6 @@ public class ItemBar : MonoBehaviour
             }
             if (selectedItem.name == "Key2")
             {
-                var raycastComp = raycast.GetComponent<RaycastController>();
                 if (raycastComp.keySelect)
                 {
                     raycastComp.keySelect2 = false;
@@ -130,8 +130,8 @@ public class ItemBar : MonoBehaviour
             }
             if (selectedItem.tag == "Panel")
             {
-                var raycastComp = raycast.GetComponent<RaycastController>();
-                if (raycastComp.panelSelect)
+                
+                if (selected == 8)
                 {
                     raycastComp.panelSelect = false;
                 }

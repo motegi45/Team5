@@ -15836,7 +15836,7 @@ GameObject:
   - component: {fileID: 23697865337979887}
   - component: {fileID: 64520898748505637}
   m_Layer: 0
-  m_Name: RFAIP_Fridge_Door_Up
+  m_Name: RFAIP_Fridge_Door_Up2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15855,7 +15855,7 @@ GameObject:
   - component: {fileID: 23697864636174646}
   - component: {fileID: 64520898380205308}
   m_Layer: 0
-  m_Name: RFAIP_Fridge_Door_Up
+  m_Name: RFAIP_Fridge_Door_Up1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
