@@ -62,6 +62,8 @@ public class RaycastController : MonoBehaviour
     public bool freezer2;
     /// <summary>パネル選択中</summary>
     public bool panelSelect;
+    /// <summary>氷漬けのパネル選択中</summary>
+    public bool holeSelect;
     /// <summary>選択中のアイテム名</summary>
     public GameObject selectedPanel;
 
@@ -119,7 +121,7 @@ public class RaycastController : MonoBehaviour
             {
                 // Ray が当たった時は、当たった座標まで赤い線を引く
                 Debug.DrawLine(ray.origin, hit.point, m_debugRayColorOnHit);
-                
+                Debug.Log(hit.collider.name);
                 if (hit.collider.tag == "Item" || hit.collider.tag == "Panel")
                 {
                     //var itemBar = GameObject.Find("CanvasWorld").transform.Find("ItemBar");
@@ -158,6 +160,16 @@ public class RaycastController : MonoBehaviour
                     else if (itemObject.tag == "Panel")
                     {
                         itemObject.transform.localScale = new Vector3(1, 60f, 60f);
+                    }
+                    else if (itemObject.name == "IceChangesFrom")
+                    {
+                        itemObject.transform.localScale = new Vector3(135,100,135);
+                        itemObject.transform.localPosition = new Vector3(6,-30f,0);
+                    }
+                    else if (itemObject.name == "KeyPlateHole")
+                    {
+                        itemObject.transform.localScale = new Vector3(270,270,270);
+                        itemObject.transform.localPosition = new Vector3(0,-17f,0);
                     }
                     else
                     {
@@ -274,24 +286,36 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.name == "RFAIP_Fridge_Door_Up1")
                 {
-                    cookingRoomScript.Freezer_1OpenOrClose();
-                    if (cookingRoomScript.m_Freezer_1.closed)
+                    if (cookingRoomScript.m_Freezer_1.Lock)
                     {
                         var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                         messageText.text = "ロックされている";
                         messageWindow.SetActive(true);
+                    }
+                    else
+                    {
+                        cookingRoomScript.Freezer_1OpenOrClose();
                     }
                 }
                 if (hit.collider.name == "RFAIP_Fridge_Door_Up2")
                 {
-                    cookingRoomScript.Freezer_2OpenOrClose();
-                    if (cookingRoomScript.m_Freezer_2.closed)
+                    if (cookingRoomScript.m_Freezer_2.Lock)
                     {
                         var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                         messageText.text = "ロックされている";
                         messageWindow.SetActive(true);
                     }
+                    else
+                    {
+                        cookingRoomScript.Freezer_2OpenOrClose();
+                    }
                 }
+
+                if (hit.collider.name == "")
+                {
+
+                }
+
                 if (hit.collider.name == "LeftBilliardsTableCamera")
                 {
                     if (!left)
@@ -347,6 +371,20 @@ public class RaycastController : MonoBehaviour
         script.selectedItem = script.selectedPort.transform.GetChild(0).gameObject;
         script.selectedItem.transform.parent = null;
         script.selectedItem.layer = LayerMask.NameToLayer("Default");
+        int i = 0;
+        if (script.btns[i].image.color == script.btnColor2)
+        {
+            while (i < 8)
+            {
+                script.btns[i].image.color = script.btnColor1;
+                i++;
+            }
+            script.selected = 8;
+            script.selectedItem = null;
+            script.selectedPort = null;
+
+        }
+
         //script.selectedItem = null;
     }
 
