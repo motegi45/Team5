@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class ItemBar : MonoBehaviour
 {
     /// <summary>通常カラー</summary>
-    [SerializeField] Color btnColor1;
+    [SerializeField] public Color btnColor1;
     /// <summary>クリック時カラー</summary>
-    [SerializeField] Color btnColor2;
+    [SerializeField] public Color btnColor2;
     ///<summary>ボタン</summary>
     [SerializeField] public GameObject[] buttons;
     ///<summary>ポート</summary>
@@ -22,7 +22,8 @@ public class ItemBar : MonoBehaviour
     [SerializeField] Transform hint;
     public GameObject[] allItemListPort = new GameObject[8];
     public GameObject[] allItemList = new GameObject[8];
-
+    /// <summary>直前に選択されていたポート</summary>
+    //public GameObject selectedBefore;
     /// <summary>現在選択中のポート</summary>
     public GameObject selectedPort;
     ///<summary>現在選択中のアイテム</summary>
@@ -139,6 +140,17 @@ public class ItemBar : MonoBehaviour
                 {
                     raycastComp.panelSelect = true;
                     raycastComp.selectedPanel = selectedItem;
+                }
+            }
+            if (selectedItem.name == "KeyPlateHole")
+            {
+                if (selected == 8)
+                {
+                    raycastComp.holeSelect = false;
+                }
+                else
+                {
+                    raycastComp.holeSelect = true;
                 }
             }
         }
