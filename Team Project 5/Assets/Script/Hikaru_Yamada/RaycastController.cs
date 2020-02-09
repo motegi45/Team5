@@ -47,7 +47,8 @@ public class RaycastController : MonoBehaviour
     [SerializeField] float m_timer;
     public BoxCollider saveBoxCollider;
 
-
+    [SerializeField] GameObject flameEffect;
+    Flame flameScript;
     [SerializeField] GameObject CookingRoomObject;
     CookingRoomScript cookingRoomScript;
     /// <summary>シンク1の水が溜まっているか</summary>
@@ -62,12 +63,15 @@ public class RaycastController : MonoBehaviour
     public bool freezer2;
     /// <summary>パネル選択中</summary>
     public bool panelSelect;
-    /// <summary>氷漬けのパネル選択中</summary>
+    /// <summary>パネル型選択中</summary>
     public bool holeSelect;
+    /// <summary>氷漬けのトロフィー選択中</summary>
+    public bool iceKeyObject;
+
     /// <summary>選択中のアイテム名</summary>
     public GameObject selectedPanel;
 
-    
+
 
     [SerializeField] GameObject hintObject;
     hintsystem hintsystem;
@@ -79,8 +83,8 @@ public class RaycastController : MonoBehaviour
     {
         panelSelect = false;
         script = itemBar.GetComponent<ItemBar>();
-        cameraMovementController = cameraObject.GetComponent< CameraMovementController >();
-        
+        cameraMovementController = cameraObject.GetComponent<CameraMovementController>();
+
         //opensystem = gamemanajer.GetComponent<opensystem>();
         if (Panel)
         {
@@ -94,12 +98,17 @@ public class RaycastController : MonoBehaviour
             sink2water = true;
 
         }
-        
+
+        if (flameEffect)
+        {
+            flameScript = flameEffect.GetComponent<Flame>();
+        }
+
         if (hintObject)
         {
             hintsystem = hintObject.GetComponent<hintsystem>();
         }
-        
+
 
 
     }
@@ -109,12 +118,12 @@ public class RaycastController : MonoBehaviour
         // クリックで Ray を飛ばす
         if (Input.GetButtonDown("Fire1"))
         {
-            
+
             // カメラの位置 → マウスでクリックした場所に Ray を飛ばすように設定する
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit; // out パラメータで Ray の衝突情報を受け取るための変数
             // Ray を飛ばして、コライダーに当たったかどうかを戻り値で受け取る
-            bool isHit = Physics.Raycast(ray, out hit, 100 , layerMask); // オーバーライドがたくさんあることに注意すること
+            bool isHit = Physics.Raycast(ray, out hit, 100, layerMask); // オーバーライドがたくさんあることに注意すること
 
             // Ray が当たったかどうかで異なる処理をする1
             if (isHit)
@@ -129,28 +138,28 @@ public class RaycastController : MonoBehaviour
                     //var itemScript = itemObject.GetComponent<ThisInfo>();
 
                     int i = 0;
-                    while(script.ports[i].transform.childCount > 0)
+                    while (script.ports[i].transform.childCount > 0)
                     {
                         i++;
                     }
-                   
+
                     var ParentPort = GameObject.Find("Port" + i);
                     //script.canUseItem[i] = itemObject;
                     var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                     messageText.text = itemObject.name + "を入手した。";
                     messageWindow.SetActive(true);
                     itemObject.layer = LayerMask.NameToLayer("UI");
-                    if (itemObject.transform.position == new Vector3 (4.12f,0.761f,-9.346f))
+                    if (itemObject.transform.position == new Vector3(4.12f, 0.761f, -9.346f))
                     {
                         cookingRoomScript.DeviceSink();
                     }
                     itemObject.transform.parent = ParentPort.transform;
                     itemObject.transform.position = ParentPort.transform.position;
-                    
+
                     if (itemObject.name == "Key1" || itemObject.name == "Key2")
                     {
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
-                        itemObject.transform.Rotate(new Vector3(180,-90,0));
+                        itemObject.transform.Rotate(new Vector3(180, -90, 0));
                     }
                     else if (itemObject.name == "HintPlane")
                     {
@@ -163,13 +172,13 @@ public class RaycastController : MonoBehaviour
                     }
                     else if (itemObject.name == "IceChangesFrom")
                     {
-                        itemObject.transform.localScale = new Vector3(135,100,135);
-                        itemObject.transform.localPosition = new Vector3(6,-30f,0);
+                        itemObject.transform.localScale = new Vector3(135, 100, 135);
+                        itemObject.transform.localPosition = new Vector3(6, -30f, 0);
                     }
                     else if (itemObject.name == "KeyPlateHole")
                     {
-                        itemObject.transform.localScale = new Vector3(270,270,270);
-                        itemObject.transform.localPosition = new Vector3(0,-17f,0);
+                        itemObject.transform.localScale = new Vector3(270, 270, 270);
+                        itemObject.transform.localPosition = new Vector3(0, -17f, 0);
                     }
                     else
                     {
@@ -181,13 +190,13 @@ public class RaycastController : MonoBehaviour
                 {
                     if (keySelect)
                     {
-                        
+
                         var door1Anim = Door1.GetComponent<Animation>();
                         var ItemBarScript = itemBar.GetComponent<ItemBar>();
                         ItemBarScript.DeleteItem();
                         door1Anim.Play();
-                        Invoke("ButtonSyutugen",3f);
-                        
+                        Invoke("ButtonSyutugen", 3f);
+
                     }
                 }
 
@@ -209,17 +218,17 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.tag == "zoom")
                 {
-                        if (cameraMovementController)
-                        {
-                            var zoomObject = hit.collider.gameObject;
-                            saveBoxCollider = zoomObject.GetComponent<BoxCollider>();
-                            saveBoxCollider.enabled = false;
-                            var zoomPoint = zoomObject.transform;
-                            cameraMovementController.Zoom(zoomPoint);
-                        }
+                    if (cameraMovementController)
+                    {
+                        var zoomObject = hit.collider.gameObject;
+                        saveBoxCollider = zoomObject.GetComponent<BoxCollider>();
+                        saveBoxCollider.enabled = false;
+                        var zoomPoint = zoomObject.transform;
+                        cameraMovementController.Zoom(zoomPoint);
+                    }
 
                 }
-                if (hit .collider.tag == "noLinkZoom")
+                if (hit.collider.tag == "noLinkZoom")
                 {
                     if (cameraMovementController)
                     {
@@ -270,11 +279,23 @@ public class RaycastController : MonoBehaviour
                 {
                     if (panelSelect)
                     {
-                        cookingRoomScript.DeviceSink(selectedPanel);
                         UseItem();
-                        script.selectedItem.transform.localScale = new Vector3(0.2f,0.05f,0.2f);
+                        cookingRoomScript.DeviceSink(selectedPanel);
+                        script.selectedItem.transform.localScale = new Vector3(0.2f, 0.05f, 0.2f);
                         script.selectedItem = null;
+                        panelSelect = false;
 
+                    }
+                    else if (holeSelect)
+                    {
+                        UseItem();
+                        cookingRoomScript.DeviceSink(script.selectedItem);
+                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                        script.selectedItem = null;
+                        holeSelect = false;
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "型に水が入った";
+                        messageWindow.SetActive(true);
                     }
                     else
                     {
@@ -282,6 +303,8 @@ public class RaycastController : MonoBehaviour
                         messageText.text = "どうやら水は抜けないようだ";
                         messageWindow.SetActive(true);
                     }
+
+
                 }
 
                 if (hit.collider.name == "RFAIP_Fridge_Door_Up1")
@@ -311,9 +334,49 @@ public class RaycastController : MonoBehaviour
                     }
                 }
 
-                if (hit.collider.name == "")
+                if (hit.collider.name == "RFAIPP_Gas_Stove (1)")
                 {
+                    if (iceKeyObject)
+                    {
+                        UseItem();
+                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                        script.selectedItem.transform.localPosition = new Vector3(0.879f, 1.1f, -5.8f);
+                        flameScript.Burn(script.selectedItem.transform.GetChild(0).gameObject);
+                        script.selectedItem = null;
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "トロフィーの氷が解けた";
+                        messageWindow.SetActive(true);
+                        iceKeyObject = false;
+                    }
+                }
 
+                if (hit.collider.name == "1")
+                {
+                    if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                    {
+                        UseItem();
+                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                        cookingRoomScript.PedestalSwitchScript(1, script.selectedItem.transform.GetChild(0).gameObject);
+                        script.selectedItem = null;
+                        iceKeyObject = false;
+                    }
+                }
+
+                if (hit.collider.name == "2")
+                {
+                    if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                    {
+                        UseItem();
+                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                        cookingRoomScript.PedestalSwitchScript(2, script.selectedItem.transform.GetChild(0).gameObject);
+                        script.selectedItem = null;
+                        iceKeyObject = false;
+                    }
+                }
+
+                if (hit.collider.name == "Freezer1")
+                {
+                    if (script.selectedItem.name == )
                 }
 
                 if (hit.collider.name == "LeftBilliardsTableCamera")
@@ -372,20 +435,18 @@ public class RaycastController : MonoBehaviour
         script.selectedItem.transform.parent = null;
         script.selectedItem.layer = LayerMask.NameToLayer("Default");
         int i = 0;
-        if (script.btns[i].image.color == script.btnColor2)
+
+        while (i < 8)
         {
-            while (i < 8)
-            {
-                script.btns[i].image.color = script.btnColor1;
-                i++;
-            }
-            script.selected = 8;
-            script.selectedItem = null;
-            script.selectedPort = null;
-
+            script.btns[i].image.color = script.btnColor1;
+            i++;
         }
+        script.selected = 8;
+        script.selectedPort = null;
 
-        //script.selectedItem = null;
+
+
+
     }
 
 

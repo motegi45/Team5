@@ -153,6 +153,17 @@ public class ItemBar : MonoBehaviour
                     raycastComp.holeSelect = true;
                 }
             }
+            if (selectedItem.name == "IceChangesFrom")
+            {
+                if (selected == 8)
+                {
+                    raycastComp.iceKeyObject = false;
+                }
+                else
+                {
+                    raycastComp.iceKeyObject = true;
+                }
+            }
         }
         
     }
