@@ -6,7 +6,8 @@ using DG.Tweening;
 
 public class Diyal : MonoBehaviour
 {
-
+    [SerializeField] GameObject Door;
+    Animation Open;
     [SerializeField] Button[] keyButtons;
     [SerializeField] GameObject[] buttonBlock;
     [SerializeField] Text result;
@@ -17,6 +18,10 @@ public class Diyal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Door)
+        {
+            Open = Door.GetComponent<Animation>();
+        }
     }
 
     // Update is called once per frame
@@ -45,9 +50,9 @@ public class Diyal : MonoBehaviour
     public void enterButtonClick(int block)
     {
         //SmoothMove(buttonHekomu[block].transform);
-        if (result.text == "0000")
+        if (result.text == "1256")
         {
-
+            Open.Play();
         }
         //SmoothMove(buttonBlock[block].transform);
     }
