@@ -14,6 +14,7 @@ TagManager:
   - noLinkZoom
   - Water
   - Panel
+  - Untag
   layers:
   - Default
   - TransparentFX
