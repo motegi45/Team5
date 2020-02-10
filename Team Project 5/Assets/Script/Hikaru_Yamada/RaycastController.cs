@@ -449,7 +449,7 @@ public class RaycastController : MonoBehaviour
                             UseItem();
                             script.selectedItem.transform.localScale = new Vector3(0.151f, 0.254f, 0.1928f);
                             cookingRoomScript.PedestalSwitchScript(1, script.selectedItem);
-                            script.selectedItem.tag = null;
+                            script.selectedItem.tag = "Untag";
                             script.selectedItem = null;
                         }
                         else if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
@@ -474,7 +474,7 @@ public class RaycastController : MonoBehaviour
                             UseItem();
                             script.selectedItem.transform.localScale = new Vector3(0.151f, 0.254f, 0.1928f);
                             cookingRoomScript.PedestalSwitchScript(2, script.selectedItem);
-                            script.selectedItem.tag = default;
+                            script.selectedItem.tag = "Untag";
                             script.selectedItem = null;
                         }
                         else if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
