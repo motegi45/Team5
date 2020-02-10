@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeviceSink : MonoBehaviour
 {
     /// <summary>沈ませているアイテム</summary>
-    [SerializeField] GameObject m_SunkItems;
+    [SerializeField] public GameObject m_SunkItems;
     /// <summary>沈ませる場所</summary>
     [SerializeField] Vector3 SinkingPlace;
     /// <summary>炎スクリプト</summary>
@@ -47,10 +47,10 @@ public class DeviceSink : MonoBehaviour
                 case "KeyPlate":
                     m_Freezer_1.Lock = false;
                     break;
-                case "IceKeyPlate":
+                case "IceKeyPlate(Clone)":
                     m_Freezer_2.Lock = false;
                     break;
-                case "IceKeyObjectPlate":
+                case "IceKeyObjectPlate(Clone)":
                     m_KeyObject.SetActive(true);
                     break;
                 case "KeyObjectPlateHole":

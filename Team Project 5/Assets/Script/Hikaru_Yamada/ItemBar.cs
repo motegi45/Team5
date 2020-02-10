@@ -134,35 +134,19 @@ public class ItemBar : MonoBehaviour
                 
                 if (selected == 8)
                 {
-                    raycastComp.panelSelect = false;
                 }
                 else
                 {
-                    raycastComp.panelSelect = true;
                     raycastComp.selectedPanel = selectedItem;
                 }
             }
             if (selectedItem.name == "KeyPlateHole")
             {
-                if (selected == 8)
-                {
-                    raycastComp.holeSelect = false;
-                }
-                else
-                {
-                    raycastComp.holeSelect = true;
-                }
+                
             }
             if (selectedItem.name == "IceChangesFrom")
             {
-                if (selected == 8)
-                {
-                    raycastComp.iceKeyObject = false;
-                }
-                else
-                {
-                    raycastComp.iceKeyObject = true;
-                }
+            
             }
         }
         

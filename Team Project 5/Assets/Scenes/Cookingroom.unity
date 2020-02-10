@@ -315,7 +315,7 @@ MeshCollider:
   m_GameObject: {fileID: 54310304}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -740,9 +740,10 @@ GameObject:
   m_Component:
   - component: {fileID: 115448591}
   - component: {fileID: 115448592}
+  - component: {fileID: 115448593}
   m_Layer: 0
   m_Name: KeyObjectPlateHole
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -784,6 +785,19 @@ MonoBehaviour:
   m_Water: {fileID: 1180185731}
   m_Ice: {fileID: 709530351}
   m_TakeObject: {fileID: 380180096}
+--- !u!65 &115448593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115448590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 0.25, z: 0.25}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &135980152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1338,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343318637}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.35, z: 0.35}
@@ -1685,7 +1699,7 @@ GameObject:
   - component: {fileID: 380180098}
   m_Layer: 0
   m_Name: IceKeyObjectPlate
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2757,7 +2771,7 @@ GameObject:
   - component: {fileID: 570290072}
   m_Layer: 0
   m_Name: StoneSlab
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3754,7 +3768,7 @@ GameObject:
   - component: {fileID: 709976824}
   m_Layer: 0
   m_Name: KeyObject
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6993,7 +7007,7 @@ MeshCollider:
   m_GameObject: {fileID: 1335986740}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -13647,9 +13661,9 @@ MonoBehaviour:
   flame: 0
   freezer1: 0
   freezer2: 0
-  panelSelect: 0
-  holeSelect: 0
-  iceKeyObject: 0
+  IceKeyPlateClone: {fileID: 0}
+  IceKeyObjectClone: {fileID: 0}
+  waterIn: 0
   selectedPanel: {fileID: 0}
   hintObject: {fileID: 0}
 --- !u!1 &1859178057
@@ -13668,7 +13682,7 @@ GameObject:
   - component: {fileID: 1859178059}
   m_Layer: 0
   m_Name: IceKeyPlate
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
