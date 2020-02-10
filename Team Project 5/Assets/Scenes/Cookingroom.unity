@@ -13679,7 +13679,7 @@ MonoBehaviour:
   IceKeyObjectClone: {fileID: 0}
   waterIn: 0
   selectedPanel: {fileID: 0}
-  deviceSinkObject: {fileID: 0}
+  deviceSinkObject: {fileID: 1459505771559523}
   hintObject: {fileID: 0}
 --- !u!1 &1859178057
 GameObject:
