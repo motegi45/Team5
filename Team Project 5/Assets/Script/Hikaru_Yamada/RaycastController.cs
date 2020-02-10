@@ -61,15 +61,13 @@ public class RaycastController : MonoBehaviour
     public bool freezer1;
     /// <summary>冷蔵庫2が開いているかどうか</summary>
     public bool freezer2;
-    /// <summary>パネル選択中</summary>
-    public bool panelSelect;
-    /// <summary>パネル型選択中</summary>
-    public bool holeSelect;
-    /// <summary>氷漬けのトロフィー選択中</summary>
-    public bool iceKeyObject;
-
+    public GameObject IceKeyPlateClone;
+    public GameObject IceKeyObjectClone;
+    public bool waterIn;
     /// <summary>選択中のアイテム名</summary>
     public GameObject selectedPanel;
+    [SerializeField] GameObject deviceSinkObject;
+    DeviceSink deviceSink;
 
 
 
@@ -81,7 +79,6 @@ public class RaycastController : MonoBehaviour
 
     void Start()
     {
-        panelSelect = false;
         script = itemBar.GetComponent<ItemBar>();
         cameraMovementController = cameraObject.GetComponent<CameraMovementController>();
 
@@ -97,6 +94,11 @@ public class RaycastController : MonoBehaviour
             sink1water = true;
             sink2water = true;
 
+        }
+
+        if (deviceSinkObject)
+        {
+            deviceSink = deviceSinkObject.GetComponent<DeviceSink>();
         }
 
         if (flameEffect)
@@ -175,10 +177,67 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.localScale = new Vector3(135, 100, 135);
                         itemObject.transform.localPosition = new Vector3(6, -30f, 0);
                     }
+                    else if (itemObject.name == "KeyObject")
+                    {
+                        itemObject.transform.localScale = new Vector3(32, 32, 32);
+                        itemObject.transform.localPosition = new Vector3(6, -38f, 0);
+                    }
                     else if (itemObject.name == "KeyPlateHole")
                     {
+                        cookingRoomScript.Freezer_1();
+                        cookingRoomScript.Freezer_2();
+                        IceKeyPlateClone = cookingRoomScript.KeyPlateHole();
                         itemObject.transform.localScale = new Vector3(270, 270, 270);
                         itemObject.transform.localPosition = new Vector3(0, -17f, 0);
+                        if (IceKeyPlateClone != null)
+                        {
+                            itemObject = IceKeyPlateClone;
+                            int j = 0;
+                            while (script.ports[j].transform.childCount > 0)
+                            {
+                                j++;
+                            }
+                            ParentPort = GameObject.Find("Port" + j);
+                            itemObject.transform.parent = ParentPort.transform;
+                            itemObject.transform.position = ParentPort.transform.position;
+                            messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "KeyPlateHoleと氷でできたキープレートを入手した。";
+                            messageWindow.SetActive(true);
+                            itemObject.layer = LayerMask.NameToLayer("UI");
+                            IceKeyPlateClone.transform.localScale = new Vector3(1, 60f, 60f);
+                        }
+                        
+
+                    }
+                    else if(hit.collider.name == "KeyObjectPlateHole")
+                    {
+                        cookingRoomScript.Freezer_1();
+                        cookingRoomScript.Freezer_2();
+                        IceKeyObjectClone = cookingRoomScript.KeyObjectPlateHole();
+                        itemObject.transform.localScale = new Vector3(270, 270, 270);
+                        itemObject.transform.localPosition = new Vector3(0, -17f, 0);
+                        if (IceKeyObjectClone != null)
+                        {
+                            itemObject = IceKeyObjectClone;
+                            int j = 0;
+                            while (script.ports[j].transform.childCount > 0)
+                            {
+                                j++;
+                            }
+                            ParentPort = GameObject.Find("Port" + j);
+                            itemObject.transform.parent = ParentPort.transform;
+                            itemObject.transform.position = ParentPort.transform.position;
+                            messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "KeyObjectPlateHoleと氷でできたトロフィープレートを入手した。";
+                            messageWindow.SetActive(true);
+                            itemObject.layer = LayerMask.NameToLayer("UI");
+                            IceKeyObjectClone.transform.localScale = new Vector3(1, 60f, 60f);
+                        }
+
+                    }
+                    else if (hit.collider.name == "StoneSlab")
+                    {
+                        itemObject.transform.localScale = new Vector3(60f, 60f, 60f);
                     }
                     else
                     {
@@ -277,25 +336,53 @@ public class RaycastController : MonoBehaviour
                 }
                 if (hit.collider.name == "DeviceSinkO")
                 {
-                    if (panelSelect)
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        cookingRoomScript.DeviceSink(selectedPanel);
-                        script.selectedItem.transform.localScale = new Vector3(0.2f, 0.05f, 0.2f);
-                        script.selectedItem = null;
-                        panelSelect = false;
+                        if (script.selectedItem.tag == "Panel")
+                        {
+                            if (deviceSink.m_SunkItems == null)
+                            {
+                                UseItem();
+                                cookingRoomScript.DeviceSink(selectedPanel);
+                                script.selectedItem.transform.localScale = new Vector3(0.2f, 0.05f, 0.2f);
+                                script.selectedItem = null;
+                            }
+                            else
+                            {
+                                var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                                messageText.text = "すでにプレートが入っています。";
+                                messageWindow.SetActive(true);
+                            }
+                            
 
-                    }
-                    else if (holeSelect)
-                    {
-                        UseItem();
-                        cookingRoomScript.DeviceSink(script.selectedItem);
-                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                        script.selectedItem = null;
-                        holeSelect = false;
-                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                        messageText.text = "型に水が入った";
-                        messageWindow.SetActive(true);
+                        }
+                        else if (script.selectedItem.name == "KeyPlateHole")
+                        {
+                            UseItem();
+                            cookingRoomScript.DeviceSink(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            script.selectedItem = null;
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "型に水が入った";
+                            messageWindow.SetActive(true);
+                            //waterIn = true;
+                        }
+                        else if (script.selectedItem.name == "KeyObjectPlateHole")
+                        {
+                            UseItem();
+                            cookingRoomScript.DeviceSink(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            script.selectedItem = null;
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "型に水が入った";
+                            messageWindow.SetActive(true);
+                        }
+                        else
+                        {
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "どうやら水は抜けないようだ";
+                            messageWindow.SetActive(true);
+                        }
                     }
                     else
                     {
@@ -336,47 +423,101 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.name == "RFAIPP_Gas_Stove (1)")
                 {
-                    if (iceKeyObject)
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                        script.selectedItem.transform.localPosition = new Vector3(0.879f, 1.1f, -5.8f);
-                        flameScript.Burn(script.selectedItem.transform.GetChild(0).gameObject);
-                        script.selectedItem = null;
-                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                        messageText.text = "トロフィーの氷が解けた";
-                        messageWindow.SetActive(true);
-                        iceKeyObject = false;
+                        if (script.selectedItem.name == "IceChangesFrom")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            script.selectedItem.transform.localPosition = new Vector3(0.879f, 0.95f, -5.8f);
+                            flameScript.Burn(script.selectedItem.transform.Find("IceKeyObject").gameObject);
+                            script.selectedItem = null;
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "トロフィーの氷が解けた";
+                            messageWindow.SetActive(true);
+                        }
                     }
+                    
                 }
 
                 if (hit.collider.name == "1")
                 {
-                    if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                        cookingRoomScript.PedestalSwitchScript(1, script.selectedItem.transform.GetChild(0).gameObject);
-                        script.selectedItem = null;
-                        iceKeyObject = false;
+                        if (script.selectedItem.name == "KeyObject")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.localScale = new Vector3(0.151f, 0.254f, 0.1928f);
+                            cookingRoomScript.PedestalSwitchScript(1, script.selectedItem);
+                            script.selectedItem.tag = null;
+                            script.selectedItem = null;
+                        }
+                        else if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            cookingRoomScript.PedestalSwitchScript(1, script.selectedItem.transform.GetChild(0).gameObject);
+                            script.selectedItem.tag = null;
+                            script.selectedItem = null;
+                        }
+                        
                     }
+                    
                 }
 
                 if (hit.collider.name == "2")
                 {
-                    if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                        cookingRoomScript.PedestalSwitchScript(2, script.selectedItem.transform.GetChild(0).gameObject);
-                        script.selectedItem = null;
-                        iceKeyObject = false;
+                        if (script.selectedItem.name == "KeyObject")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.localScale = new Vector3(0.151f, 0.254f, 0.1928f);
+                            cookingRoomScript.PedestalSwitchScript(2, script.selectedItem);
+                            script.selectedItem.tag = default;
+                            script.selectedItem = null;
+                        }
+                        else if (script.selectedItem.transform.GetChild(0).gameObject.name == "KeyObject")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            cookingRoomScript.PedestalSwitchScript(2, script.selectedItem.transform.GetChild(0).gameObject);
+                            script.selectedItem.tag = default;
+                            script.selectedItem = null;
+                        }
+                        
                     }
+                    
                 }
 
                 if (hit.collider.name == "Freezer1")
                 {
-                    if (script.selectedItem.name == )
+                    if(script.selectedItem != null)
+                    {
+                        if (script.selectedItem.name == "KeyPlateHole" || script.selectedItem.name == "KeyObjectPlateHole")
+                        {
+                            UseItem();
+                            cookingRoomScript.Freezer_1(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1, 1, 1);
+                            //script.selectedItem.transform.localPosition = new Vector3(4.025f,1.916f,-1.039f);
+                            script.selectedItem = null;
+                        }
+                    }
+                    
+                }
+                if (hit.collider.name == "Freezer2")
+                {
+                    if (script.selectedItem != null)
+                    {
+                        if (script.selectedItem.name == "KeyPlateHole" || script.selectedItem.name == "KeyObjectPlateHole")
+                        {
+                            UseItem();
+                            cookingRoomScript.Freezer_2(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1, 1, 1);
+                            script.selectedItem = null;
+
+                        }
+                    }
                 }
 
                 if (hit.collider.name == "LeftBilliardsTableCamera")
