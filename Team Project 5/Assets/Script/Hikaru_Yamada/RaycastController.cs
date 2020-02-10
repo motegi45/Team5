@@ -168,6 +168,11 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.localScale = new Vector3(6, 1, 6);
                         itemObject.transform.Rotate(new Vector3(-90, 0, 0));
                     }
+                    else if (itemObject.name == "HintPlane (1)")
+                    {
+                        itemObject.transform.localScale = new Vector3(6, 1, 6);
+                        itemObject.transform.Rotate(new Vector3(-90, 0, 0));
+                    }
                     else if (itemObject.tag == "Panel")
                     {
                         itemObject.transform.localScale = new Vector3(1, 60f, 60f);
