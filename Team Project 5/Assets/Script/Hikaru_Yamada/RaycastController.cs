@@ -69,14 +69,15 @@ public class RaycastController : MonoBehaviour
     [SerializeField] GameObject deviceSinkObject;
     DeviceSink deviceSink;
 
-
+    /// <summary>石板を入手したか</summary>
+    public bool stone;
 
     [SerializeField] GameObject hintObject;
     hintsystem hintsystem;
     bool left = false;
     bool right = false;
 
-
+    SceneSaverCh sceneSaverCh;
     void Start()
     {
         script = itemBar.GetComponent<ItemBar>();
@@ -242,6 +243,7 @@ public class RaycastController : MonoBehaviour
                     }
                     else if (hit.collider.name == "StoneSlab")
                     {
+                        stone = true;
                         itemObject.transform.localScale = new Vector3(60f, 60f, 60f);
                     }
                     else
@@ -304,7 +306,7 @@ public class RaycastController : MonoBehaviour
                         cameraMovementController.Zoom(zoomPoint);
                     }
                 }
-                if (hit.collider.tag == "reFirstDoor")
+                /*if (hit.collider.tag == "reFirstDoor")
                 {
                     Scenechange(firstRoom);
                 }
@@ -312,7 +314,27 @@ public class RaycastController : MonoBehaviour
                 if (hit.collider.tag == "enterDoor")
                 {
                     Scenechange(enterRoom);
+                }*/
+
+                if (hit.collider.name == "door1opening_prefab")
+                {
+                    if (stone)
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉が開いた";
+                        messageWindow.SetActive(true);
+                        sceneSaverCh = cameraObject.GetComponent<SceneSaverCh>();
+                        Scenechange(firstRoom);
+                    }
+                    else
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "鍵がかかっている";
+                        messageWindow.SetActive(true);
+                    }
                 }
+
+
                 if (hit.collider.name == "Water")
                 {
                     if (sink1water)

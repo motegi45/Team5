@@ -20,7 +20,8 @@ public class SceneSaverCh : MonoBehaviour
     public static Transform cameraLastTransform;
     /// <summary>牢屋のドアの開き情報</summary>
     public static bool doa;
-    /// <summary></summary>
+    /// <summary>クッキングルームをクリアしたか</summary>
+    public static bool cookingCrea;
 
     //エンターテイメントルームの保持情報
     /// <summary>ヒントプレート1位置情報</summary>
@@ -68,8 +69,6 @@ public class SceneSaverCh : MonoBehaviour
             }
         }
         key = true;
-
-
     }
 
     public static Transform GetCP()
