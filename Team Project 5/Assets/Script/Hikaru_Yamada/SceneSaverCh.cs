@@ -22,7 +22,7 @@ public class SceneSaverCh : MonoBehaviour
     public static bool doa;
     /// <summary>クッキングルームをクリアしたか</summary>
     public static bool cookingCrea;
-
+    public static bool enterCrea;
     //エンターテイメントルームの保持情報
     /// <summary>ヒントプレート1位置情報</summary>
     public static Transform hintplate1;

@@ -68,7 +68,8 @@ public class RaycastController : MonoBehaviour
     public GameObject selectedPanel;
     [SerializeField] GameObject deviceSinkObject;
     DeviceSink deviceSink;
-
+    [SerializeField] GameObject stone1;
+    [SerializeField] GameObject stone2;
     /// <summary>石板を入手したか</summary>
     public bool stone;
 
@@ -76,8 +77,6 @@ public class RaycastController : MonoBehaviour
     hintsystem hintsystem;
     bool left = false;
     bool right = false;
-
-    SceneSaverCh sceneSaverCh;
     void Start()
     {
         script = itemBar.GetComponent<ItemBar>();
@@ -112,8 +111,30 @@ public class RaycastController : MonoBehaviour
             hintsystem = hintObject.GetComponent<hintsystem>();
         }
 
-
-
+        if (SceneSaverCh.cookingCrea)
+        {
+            int j = 0;
+            while (script.ports[j].transform.childCount > 0)
+            {
+                j++;
+            }
+            var ParentPort = GameObject.Find("Port" + j);
+            stone2.transform.parent = ParentPort.transform;
+            stone2.transform.position = ParentPort.transform.position;
+            stone2.transform.localScale = new Vector3(60f, 60f, 60f);
+        }
+        if (SceneSaverCh.enterCrea)
+        {
+            int j = 0;
+            while (script.ports[j].transform.childCount > 0)
+            {
+                j++;
+            }
+            var ParentPort = GameObject.Find("Port" + j);
+            stone1.transform.parent = ParentPort.transform;
+            stone1.transform.position = ParentPort.transform.position;
+            stone1.transform.localScale = new Vector3(60f, 60f, 60f);
+        }
     }
 
     void Update()
@@ -323,7 +344,14 @@ public class RaycastController : MonoBehaviour
                         var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
                         messageText.text = "扉が開いた";
                         messageWindow.SetActive(true);
-                        sceneSaverCh = cameraObject.GetComponent<SceneSaverCh>();
+                        if (SceneManager.GetActiveScene().name == "Cookingroom")
+                        {
+                            SceneSaverCh.cookingCrea = true;
+                        }
+                        else if(SceneManager.GetActiveScene().name == "entertainment room")
+                        {
+                            SceneSaverCh.enterCrea = true;
+                        }
                         Scenechange(firstRoom);
                     }
                     else
