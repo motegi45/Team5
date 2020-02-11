@@ -72,8 +72,7 @@ public class ItemBar : MonoBehaviour
                 i++;
             }
             selected = 8;
-            selectedItem = null;
-            selectedPort = null;
+            
             
         }
         else
@@ -92,6 +91,7 @@ public class ItemBar : MonoBehaviour
         if (0 < selectedPort.transform.childCount)
         {
             selectedItem = selectedPort.transform.GetChild(0).gameObject;
+            Debug.Log(selectedItem.name);
             if (selectedItem.name == "Diary1")
             {
                 if (diaryOpen)
@@ -105,6 +105,32 @@ public class ItemBar : MonoBehaviour
                     diaryOpen = true;
                 }
                 
+            }
+            if (selectedItem.name == "金庫取り扱い説明書")
+            {
+                if (diaryOpen)
+                {
+                    allItem[0].SetActive(false);
+                    diaryOpen = false;
+                }
+                else
+                {
+                    allItem[0].SetActive(true);
+                    diaryOpen = true;
+                }
+            }
+            if (selectedItem.name == "謎のメモ")
+            {
+                if (diaryOpen)
+                {
+                    allItem[0].SetActive(false);
+                    diaryOpen = false;
+                }
+                else
+                {
+                    allItem[0].SetActive(true);
+                    diaryOpen = true;
+                }
             }
             if (selectedItem.name == "Key1")
             {
@@ -148,6 +174,11 @@ public class ItemBar : MonoBehaviour
             {
             
             }
+        }
+        if (selected == 8)
+        {
+            selectedItem = null;
+            selectedPort = null;
         }
         
     }
