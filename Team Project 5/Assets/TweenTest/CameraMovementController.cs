@@ -34,6 +34,12 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
+        if(SceneSaverCh.cameraLastTransform != null)
+        {
+            this.transform.position = SceneSaverCh.cameraLastTransform.position;
+            this.transform.rotation = SceneSaverCh.cameraLastTransform.rotation;
+            this.transform.Rotate(0,180,0);
+        }
         raycastController = gameManager.GetComponent<RaycastController>();
         var hintsystem = hint.GetComponent<hintsystem>();
     }
@@ -45,22 +51,26 @@ public class CameraMovementController : MonoBehaviour
         //テスト用
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if(info < 4)
+            if (SceneSaverCh.doa)
             {
-                info++;
+                if (info < 4)
+                {
+                    info++;
+                }
+                if (info == 2)
+                {
+                    SmoothMove(m_cameraPoints2[2]);
+                }
+                if (info == 3)
+                {
+                    SmoothMove(m_cameraPoints3[2]);
+                }
+                if (info == 4)
+                {
+                    SmoothMove(m_cameraPoints4[2]);
+                }
             }
-            if (info == 2)
-            {
-                SmoothMove(m_cameraPoints2[2]);
-            }
-            if (info == 3)
-            {
-                SmoothMove(m_cameraPoints3[2]);
-            }
-            if (info == 4)
-            {
-                SmoothMove(m_cameraPoints4[2]);
-            }
+            
 
 
         }
