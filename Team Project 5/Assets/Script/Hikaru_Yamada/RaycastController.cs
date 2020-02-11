@@ -77,6 +77,7 @@ public class RaycastController : MonoBehaviour
     hintsystem hintsystem;
     bool left = false;
     bool right = false;
+
     void Start()
     {
         script = itemBar.GetComponent<ItemBar>();
@@ -283,7 +284,7 @@ public class RaycastController : MonoBehaviour
                         ItemBarScript.DeleteItem();
                         door1Anim.Play();
                         Invoke("ButtonSyutugen", 3f);
-
+                        SceneSaverCh.doa = true;
                     }
                 }
 

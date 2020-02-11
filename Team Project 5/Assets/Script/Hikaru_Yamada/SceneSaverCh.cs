@@ -30,7 +30,6 @@ public class SceneSaverCh : MonoBehaviour
     public static Transform hintplate2;
     /// <summary>金庫の開き情報</summary>
     public static bool safeOpen;
-
     //クッキングルームの保持情報
 
 
