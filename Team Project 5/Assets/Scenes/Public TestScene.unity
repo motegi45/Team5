@@ -4506,7 +4506,7 @@ MonoBehaviour:
   itemBar: {fileID: 640116252}
   messageWindow: {fileID: 413604881}
   zoomPoints: []
-  cameraObject: {fileID: 0}
+  cameraObject: {fileID: 1512491403}
   m_moveTime: 1
   Panel: {fileID: 1757405360}
   m_timer: 0
@@ -7641,6 +7641,8 @@ GameObject:
   - component: {fileID: 1512491406}
   - component: {fileID: 1512491405}
   - component: {fileID: 1512491404}
+  - component: {fileID: 1512491409}
+  - component: {fileID: 1512491408}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7758,6 +7760,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512491408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512491403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61321ef93573d6e459518177d5d511b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemBarObject: {fileID: 640116252}
+  mainCamera: {fileID: 1512491403}
+--- !u!114 &1512491409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512491403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b6c8fcd80c820469293787675e843f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diary1: {fileID: 161895380}
+  penLight1: {fileID: 1127855564}
+  key1: {fileID: 1543414737}
 --- !u!1 &1526517917
 GameObject:
   m_ObjectHideFlags: 0
