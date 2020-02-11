@@ -49,7 +49,7 @@ public class CameraMovementController : MonoBehaviour
 
         ///カメラの動きを制限
         //テスト用
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (SceneSaverCh.doa)
             {
@@ -74,7 +74,7 @@ public class CameraMovementController : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             if (info > 1)
             {
@@ -262,7 +262,7 @@ public class CameraMovementController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown("1") || Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
         {
             OpenClose();
         }
