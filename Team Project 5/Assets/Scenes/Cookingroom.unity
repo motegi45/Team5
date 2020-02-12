@@ -1154,7 +1154,6 @@ GameObject:
   - component: {fileID: 260415387}
   - component: {fileID: 260415386}
   - component: {fileID: 260415385}
-  - component: {fileID: 260415389}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1260,20 +1259,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &260415389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260415384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61321ef93573d6e459518177d5d511b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemBarObject: {fileID: 0}
-  mainCamera: {fileID: 0}
 --- !u!1 &266180890
 GameObject:
   m_ObjectHideFlags: 0
@@ -14987,6 +14972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enterRoom: 
   firstRoom: Public TestScene
+  cookRoom: 
   m_debugRayLength: 100
   m_debugRayColorOnHit: {r: 1, g: 0, b: 0, a: 1}
   layerMask:
@@ -15030,6 +15016,8 @@ MonoBehaviour:
   stone2: {fileID: 0}
   stone: 0
   hintObject: {fileID: 0}
+  stoneTransform1: {fileID: 0}
+  stoneTransform2: {fileID: 0}
 --- !u!1 &1859178057
 GameObject:
   m_ObjectHideFlags: 0

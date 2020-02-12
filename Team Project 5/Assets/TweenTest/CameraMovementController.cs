@@ -34,11 +34,12 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
-        if(SceneSaverCh.GetCP() != null)
+        if(SceneSaverCh.cookingCrea || SceneSaverCh.enterCrea)
         {
-            this.transform.position = SceneSaverCh.GetCP().position;
-            this.transform.rotation = SceneSaverCh.GetCP().rotation;
+            this.transform.position = SceneSaverCh.GetCP();
+            this.transform.rotation = SceneSaverCh.GetCR();
             this.transform.Rotate(0,180,0);
+            info = 3;
         }
         raycastController = gameManager.GetComponent<RaycastController>();
         var hintsystem = hint.GetComponent<hintsystem>();
