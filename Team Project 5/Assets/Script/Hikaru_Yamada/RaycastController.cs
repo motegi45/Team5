@@ -89,7 +89,7 @@ public class RaycastController : MonoBehaviour
         Debug.Log(SceneSaverCh.GetKey());
         Debug.Log(SceneSaverCh.GetLight());
         Debug.Log(SceneSaverCh.GetCP());*/
-        if(SceneSaverCh.doa)
+        if(SceneSaverCh.doa && SceneManager.GetActiveScene().name == "Public TestScene")
         {
             var door1Anim = Door1.GetComponent<Animation>();
             door1Anim.Play();
@@ -349,6 +349,7 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.tag == "zoom")
                 {
+                    Debug.Log(cameraMovementController);
                     if (cameraMovementController)
                     {
                         var zoomObject = hit.collider.gameObject;
