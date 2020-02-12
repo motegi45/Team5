@@ -16,6 +16,7 @@ public class RaycastController : MonoBehaviour
 {
     [SerializeField] string enterRoom;
     [SerializeField] string firstRoom;
+    [SerializeField] string cookRoom;
     /// <summary>Ray が何にも当たらなかった時、Scene に表示する Ray の長さ</summary>
     [SerializeField] float m_debugRayLength = 100f;
     /// <summary>Ray が何かに当たった時に Scene に表示する Ray の色</summary>
@@ -77,12 +78,16 @@ public class RaycastController : MonoBehaviour
     hintsystem hintsystem;
     bool left = false;
     bool right = false;
-
+    SceneSaverCh sceneSaverCh;
+    /// <summary>石板のトランスフォーム</summary>
+    [SerializeField] GameObject stoneTransform1;
+    [SerializeField] GameObject stoneTransform2;
     void Start()
     {
         script = itemBar.GetComponent<ItemBar>();
         cameraMovementController = cameraObject.GetComponent<CameraMovementController>();
 
+        sceneSaverCh = cameraObject.GetComponent<SceneSaverCh>();
         //opensystem = gamemanajer.GetComponent<opensystem>();
         if (Panel)
         {
@@ -112,29 +117,49 @@ public class RaycastController : MonoBehaviour
             hintsystem = hintObject.GetComponent<hintsystem>();
         }
 
-        if (SceneSaverCh.cookingCrea)
+        if (SceneSaverCh.CookCrea())
         {
-            int j = 0;
-            while (script.ports[j].transform.childCount > 0)
+            if (SceneSaverCh.StoneOn2())
             {
-                j++;
+                stone2.transform.position = stoneTransform1.transform.position;
+                stone2.transform.rotation = stoneTransform1.transform.rotation;
+                stone2.transform.localScale = stoneTransform1.transform.localScale;
             }
-            var ParentPort = GameObject.Find("Port" + j);
-            stone2.transform.parent = ParentPort.transform;
-            stone2.transform.position = ParentPort.transform.position;
-            stone2.transform.localScale = new Vector3(60f, 60f, 60f);
+            else
+            {
+                int j = 0;
+                while (script.ports[j].transform.childCount > 0)
+                {
+                    j++;
+                }
+                var ParentPort = GameObject.Find("Port" + j);
+                stone2.transform.parent = ParentPort.transform;
+                stone2.transform.position = ParentPort.transform.position;
+                stone2.transform.localScale = new Vector3(60f, 60f, 60f);
+            }
+            
         }
-        if (SceneSaverCh.enterCrea)
+        if (SceneSaverCh.EnterCrea())
         {
-            int j = 0;
-            while (script.ports[j].transform.childCount > 0)
+            if (SceneSaverCh.StoneOn1())
             {
-                j++;
+                stone1.transform.position = stoneTransform1.transform.position;
+                stone1.transform.rotation = stoneTransform1.transform.rotation;
+                stone1.transform.localScale = stoneTransform1.transform.localScale;
             }
-            var ParentPort = GameObject.Find("Port" + j);
-            stone1.transform.parent = ParentPort.transform;
-            stone1.transform.position = ParentPort.transform.position;
-            stone1.transform.localScale = new Vector3(60f, 60f, 60f);
+            else
+            {
+                int j = 0;
+                while (script.ports[j].transform.childCount > 0)
+                {
+                    j++;
+                }
+                var ParentPort = GameObject.Find("Port" + j);
+                stone1.transform.parent = ParentPort.transform;
+                stone1.transform.position = ParentPort.transform.position;
+                stone1.transform.localScale = new Vector3(60f, 60f, 60f);
+            }
+            
         }
     }
 
@@ -283,24 +308,32 @@ public class RaycastController : MonoBehaviour
                         var ItemBarScript = itemBar.GetComponent<ItemBar>();
                         ItemBarScript.DeleteItem();
                         door1Anim.Play();
-                        Invoke("ButtonSyutugen", 3f);
+                        //Invoke("ButtonSyutugen", 3f);
                         SceneSaverCh.doa = true;
                     }
                 }
 
-                if (hit.collider.tag == "BigDoor")
+                if (hit.collider.name == "LastDoor")
                 {
-                    if (keySelect2)
+                    if (SceneSaverCh.StoneOn1() && SceneSaverCh.StoneOn2())
                     {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉が開いた";
+                        messageWindow.SetActive(true);
                         var bigDoor1Anim = bigDoor1.GetComponent<Animation>();
                         var bigDoor2Anim = bigDoor2.GetComponent<Animation>();
                         var ItemBarScript = itemBar.GetComponent<ItemBar>();
-                        ItemBarScript.DeleteItem();
                         bigDoor1Anim.Play();
                         bigDoor2Anim.Play();
                         Invoke("ButtonSyutugen", 3f);
                         clear = true;
                         m_timer = 0;
+                    }
+                    else
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "鍵がかかっている";
+                        messageWindow.SetActive(true);
                     }
                 }
 
@@ -337,6 +370,45 @@ public class RaycastController : MonoBehaviour
                 {
                     Scenechange(enterRoom);
                 }*/
+                if (hit.collider.name == "EnterDoor")
+                {
+                    if (!SceneSaverCh.EnterCrea())
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉が開いた";
+                        messageWindow.SetActive(true);
+                        sceneSaverCh.SceneSave();
+                        Scenechange(enterRoom);
+                    }
+                    else
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉はもう開かない";
+                        messageWindow.SetActive(true);
+                    }
+                    
+
+                }
+
+                if (hit.collider.name == "CookDoor")
+                {
+                    if (!SceneSaverCh.CookCrea())
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉が開いた";
+                        messageWindow.SetActive(true);
+                        sceneSaverCh.SceneSave();
+                        Scenechange(cookRoom);
+                    }
+                    else
+                    {
+                        var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        messageText.text = "扉はもう開かない";
+                        messageWindow.SetActive(true);
+                    }
+
+
+                }
 
                 if (hit.collider.name == "door1opening_prefab")
                 {
@@ -353,6 +425,7 @@ public class RaycastController : MonoBehaviour
                         {
                             SceneSaverCh.enterCrea = true;
                         }
+                        
                         Scenechange(firstRoom);
                     }
                     else
@@ -364,6 +437,30 @@ public class RaycastController : MonoBehaviour
                 }
 
 
+                if (hit.collider.name == "stonePanel1")
+                {
+                    if(script.selectedItem.name == "StoneSlab")
+                    {
+                        UseItem();
+                        script.selectedItem.transform.position = stoneTransform1.transform.position;
+                        script.selectedItem.transform.rotation = stoneTransform1.transform.rotation;
+                        script.selectedItem.transform.localScale = stoneTransform1.transform.localScale;
+                        script.selectedItem = null;
+                        SceneSaverCh.stoneOn1 = true;
+                    }
+                }
+                if (hit.collider.name == "stonePanel2")
+                {
+                    if (script.selectedItem.name == "StoneSlab")
+                    {
+                        UseItem();
+                        script.selectedItem.transform.position = stoneTransform2.transform.position;
+                        script.selectedItem.transform.rotation = stoneTransform2.transform.rotation;
+                        script.selectedItem.transform.localScale = stoneTransform2.transform.localScale;
+                        script.selectedItem = null;
+                        SceneSaverCh.stoneOn2 = true;
+                    }
+                }
                 if (hit.collider.name == "Water")
                 {
                     if (sink1water)
@@ -622,6 +719,7 @@ public class RaycastController : MonoBehaviour
 
     public void Scenechange(string name)
     {
+
         SceneManager.LoadScene(name);
     }
 

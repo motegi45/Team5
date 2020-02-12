@@ -23,6 +23,11 @@ public class SceneSaverCh : MonoBehaviour
     /// <summary>クッキングルームをクリアしたか</summary>
     public static bool cookingCrea;
     public static bool enterCrea;
+    /// <summary>石板をはめたか</summary>
+    public static bool stoneOn1;
+    public static bool stoneOn2;
+
+
     //エンターテイメントルームの保持情報
     /// <summary>ヒントプレート1位置情報</summary>
     public static Transform hintplate1;
@@ -38,7 +43,7 @@ public class SceneSaverCh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -48,7 +53,7 @@ public class SceneSaverCh : MonoBehaviour
     }
 
     //シーン以降直前に保存しておく
-    void SceneSave()
+    public void SceneSave()
     {
         cameraLastTransform = mainCamera.transform;
         itemBar = itemBarObject.GetComponent<ItemBar>();
@@ -66,6 +71,7 @@ public class SceneSaverCh : MonoBehaviour
                     penLight = true;
                 }
             }
+            i++;
         }
         key = true;
     }
@@ -89,4 +95,30 @@ public class SceneSaverCh : MonoBehaviour
     {
         return penLight;
     }
+
+    public static bool GetDoorOpen()
+    {
+        return doa;
+    }
+
+    public static bool EnterCrea()
+    {
+        return enterCrea;
+    }
+
+    public static bool CookCrea()
+    {
+        return cookingCrea;
+    }
+
+    public static bool StoneOn1()
+    {
+        return stoneOn1;
+    }
+
+    public static bool StoneOn2()
+    {
+        return stoneOn2;
+    }
+
 }

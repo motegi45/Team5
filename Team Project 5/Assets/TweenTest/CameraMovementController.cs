@@ -34,10 +34,10 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
-        if(SceneSaverCh.cameraLastTransform != null)
+        if(SceneSaverCh.GetCP() != null)
         {
-            this.transform.position = SceneSaverCh.cameraLastTransform.position;
-            this.transform.rotation = SceneSaverCh.cameraLastTransform.rotation;
+            this.transform.position = SceneSaverCh.GetCP().position;
+            this.transform.rotation = SceneSaverCh.GetCP().rotation;
             this.transform.Rotate(0,180,0);
         }
         raycastController = gameManager.GetComponent<RaycastController>();
