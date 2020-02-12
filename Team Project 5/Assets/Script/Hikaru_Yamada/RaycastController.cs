@@ -135,6 +135,7 @@ public class RaycastController : MonoBehaviour
                 stone2.transform.position = stoneTransform1.transform.position;
                 stone2.transform.rotation = stoneTransform1.transform.rotation;
                 stone2.transform.localScale = stoneTransform1.transform.localScale;
+                SceneSaverCh.stoneOn2 = true;
             }
             else
             {
@@ -157,6 +158,7 @@ public class RaycastController : MonoBehaviour
                 stone1.transform.position = stoneTransform1.transform.position;
                 stone1.transform.rotation = stoneTransform1.transform.rotation;
                 stone1.transform.localScale = stoneTransform1.transform.localScale;
+                SceneSaverCh.stoneOn1 = true;
             }
             else
             {
@@ -442,27 +444,35 @@ public class RaycastController : MonoBehaviour
 
                 if (hit.collider.name == "stonePanel1")
                 {
-                    if(script.selectedItem.name == "StoneSlab")
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        script.selectedItem.transform.position = stoneTransform1.transform.position;
-                        script.selectedItem.transform.rotation = stoneTransform1.transform.rotation;
-                        script.selectedItem.transform.localScale = stoneTransform1.transform.localScale;
-                        script.selectedItem = null;
-                        SceneSaverCh.stoneOn1 = true;
+                        if (script.selectedItem.name == "StoneSlab")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.position = stoneTransform1.transform.position;
+                            script.selectedItem.transform.rotation = stoneTransform1.transform.rotation;
+                            script.selectedItem.transform.localScale = stoneTransform1.transform.localScale;
+                            script.selectedItem = null;
+                            SceneSaverCh.stoneOn1 = true;
+                        }
                     }
+                    
                 }
                 if (hit.collider.name == "stonePanel2")
                 {
-                    if (script.selectedItem.name == "StoneSlab")
+                    if (script.selectedItem != null)
                     {
-                        UseItem();
-                        script.selectedItem.transform.position = stoneTransform2.transform.position;
-                        script.selectedItem.transform.rotation = stoneTransform2.transform.rotation;
-                        script.selectedItem.transform.localScale = stoneTransform2.transform.localScale;
-                        script.selectedItem = null;
-                        SceneSaverCh.stoneOn2 = true;
+                        if (script.selectedItem.name == "StoneSlab")
+                        {
+                            UseItem();
+                            script.selectedItem.transform.position = stoneTransform2.transform.position;
+                            script.selectedItem.transform.rotation = stoneTransform2.transform.rotation;
+                            script.selectedItem.transform.localScale = stoneTransform2.transform.localScale;
+                            script.selectedItem = null;
+                            SceneSaverCh.stoneOn2 = true;
+                        }
                     }
+                        
                 }
                 if (hit.collider.name == "Water")
                 {

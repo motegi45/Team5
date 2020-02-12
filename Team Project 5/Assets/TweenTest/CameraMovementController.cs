@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class CameraMovementController : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class CameraMovementController : MonoBehaviour
 
     void Start()
     {
-        if(SceneSaverCh.cookingCrea || SceneSaverCh.enterCrea)
+        if((SceneSaverCh.cookingCrea || SceneSaverCh.enterCrea) && SceneManager.GetActiveScene().name == "Public TestScene")
         {
             this.transform.position = SceneSaverCh.GetCP();
             this.transform.rotation = SceneSaverCh.GetCR();
