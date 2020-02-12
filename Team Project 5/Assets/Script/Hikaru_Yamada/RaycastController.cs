@@ -301,7 +301,7 @@ public class RaycastController : MonoBehaviour
                         }
 
                     }
-                    else if (hit.collider.name == "1つ目の石板")
+                    else if (hit.collider.name == "StoneSlab")
                     {
                         stone = true;
                         itemObject.transform.localScale = new Vector3(60f, 60f, 60f);
