@@ -46,7 +46,7 @@ public class hintsystem : MonoBehaviour
         while (i < a)
         {
 
-            if (itemScript.allItemList[i].name == "HintPlane" || itemScript.allItemList[i].name == "HintPlane (1)")
+            if (itemScript.allItemList[i].name == "②と書かれた紙" || itemScript.allItemList[i].name == "⑤と書かれた紙")
             {
                 item++;
             }
