@@ -604,7 +604,7 @@ public class RaycastController : MonoBehaviour
                     }
                 }
 
-                if (hit.collider.name == "RFAIPP_Gas_Stove (1)")
+                if (hit.collider.name == "FlameEffect")
                 {
                     if (script.selectedItem != null)
                     {
