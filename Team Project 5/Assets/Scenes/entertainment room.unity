@@ -10627,7 +10627,17 @@ PrefabInstance:
     - target: {fileID: 838924366976050711, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_Text
-      value: "\u91D1\u5EAB\u53D6\u308A\u6271\u3044\u8AAC\u660E\u66F8\n\n\u305F\u3060\u3044\u307E\u91D1\u5EAB\u6545\u969C\u4E2D\u306B\u3064\u304D\u3001\u5DE6\u304B\u3089\u9806\u306B\u5C0F\u3055\u3044\u6570\u5B57\u3092\u5165\u529B\u3057\u306A\u3044\u3068\u4F5C\u52D5\u3057\u307E\u305B\u3093\u3002\u3054\u6CE8\u610F\u304F\u3060\u3055\u3044\n\n\u91D1\u5EAB\u7BA1\u7406\u8005\u3000\u30BD\u30F3\u30B0"
+      value: "\u91D1\u5EAB\u53D6\u308A\u6271\u3044\u8AAC\u660E\u66F8\n\n\u305F\u3060\u3044\u307E\u91D1\u5EAB\u6545\u969C\u4E2D\u306E\u305F\u3081\u3000\u5DE6\u304B\u3089\u9806\u306B\u5C0F\u3055\u3044\u6570\u5B57\u3092\u5165\u529B\u3057\u306A\u3044\u3068\u4F5C\u52D5\u3057\u307E\u305B\u3093\u3002\n\u3054\u6CE8\u610F\u304F\u3060\u3055\u3044\u3002\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366976050711, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366976050711, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 838924367539207610, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
@@ -10638,7 +10648,17 @@ PrefabInstance:
     - target: {fileID: 838924367539207610, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_Text
-      value: "\u6B63\u3057\u3044\u4F7F\u7528\u4F8B\n\uFF11\uFF12\uFF13\uFF14\n\n\u30C0\u30E1\u306A\u4F7F\u7528\u4F8B\n\uFF14\uFF13\uFF12\uFF11"
+      value: "\n\n\u6B63\u3057\u3044\u4F7F\u7528\u4F8B\n\uFF11\uFF12\uFF13\uFF14\n\n\u30C0\u30E1\u306A\u4F7F\u7528\u4F8B\n\uFF14\uFF13\uFF12\uFF11\n\n\u91D1\u5EAB\u7BA1\u7406\u8005\u3000\u3000\u30BD\u30F3\u30B0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924367539207610, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924367539207610, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 838924366466208655, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
