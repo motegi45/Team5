@@ -217,7 +217,7 @@ public class RaycastController : MonoBehaviour
                     itemObject.transform.parent = ParentPort.transform;
                     itemObject.transform.position = ParentPort.transform.position;
 
-                    if (itemObject.name == "Key1" || itemObject.name == "Key2")
+                    if (itemObject.name == "牢屋のカギ" || itemObject.name == "Key2") 
                     {
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
                         itemObject.transform.Rotate(new Vector3(180, -90, 0));
@@ -506,7 +506,7 @@ public class RaycastController : MonoBehaviour
                             else
                             {
                                 var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                                messageText.text = "他の物が入っています。";
+                                messageText.text = "すでにプレートが入っています。";
                                 messageWindow.SetActive(true);
                             }
                             
@@ -514,43 +514,24 @@ public class RaycastController : MonoBehaviour
                         }
                         else if (script.selectedItem.name == "KeyPlateHole")
                         {
-                            if (deviceSink.m_SunkItems == null)
-                            {
-                                UseItem();
-                                cookingRoomScript.DeviceSink(script.selectedItem);
-                                script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                                script.selectedItem = null;
-                                var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                                messageText.text = "型に水が入った";
-                                messageWindow.SetActive(true);
-                            }
-                            else
-                            {
-                                var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                                messageText.text = "他の物が入っています。";
-                                messageWindow.SetActive(true);
-                            }
-
+                            UseItem();
+                            cookingRoomScript.DeviceSink(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            script.selectedItem = null;
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "型に水が入った";
+                            messageWindow.SetActive(true);
+                            //waterIn = true;
                         }
                         else if (script.selectedItem.name == "KeyObjectPlateHole")
                         {
-                            if (deviceSink.m_SunkItems == null)
-                            {
-                                UseItem();
-                                cookingRoomScript.DeviceSink(script.selectedItem);
-                                script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
-                                script.selectedItem = null;
-                                var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                                messageText.text = "型に水が入った";
-                                messageWindow.SetActive(true);
-                            }
-                            else
-                            {
-                                var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
-                                messageText.text = "他の物が入っています。";
-                                messageWindow.SetActive(true);
-                            }
-                                
+                            UseItem();
+                            cookingRoomScript.DeviceSink(script.selectedItem);
+                            script.selectedItem.transform.localScale = new Vector3(1f, 1f, 1f);
+                            script.selectedItem = null;
+                            var messageText = messageWindow.transform.GetChild(0).gameObject.GetComponent<Text>();
+                            messageText.text = "型に水が入った";
+                            messageWindow.SetActive(true);
                         }
                         else
                         {
@@ -596,7 +577,7 @@ public class RaycastController : MonoBehaviour
                     }
                 }
 
-                if (hit.collider.name == "FlameEffect")
+                if (hit.collider.name == "RFAIPP_Gas_Stove (1)")
                 {
                     if (script.selectedItem != null)
                     {

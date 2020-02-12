@@ -92,7 +92,7 @@ public class ItemBar : MonoBehaviour
         {
             selectedItem = selectedPort.transform.GetChild(0).gameObject;
             Debug.Log(selectedItem.name);
-            if (selectedItem.name == "Diary1")
+            if (selectedItem.name == "犠牲者の手記")
             {
                 if (diaryOpen)
                 {
@@ -132,7 +132,7 @@ public class ItemBar : MonoBehaviour
                     diaryOpen = true;
                 }
             }
-            if (selectedItem.name == "Key1")
+            if (selectedItem.name == "牢屋のカギ")
             {
                 if (raycastComp.keySelect)
                 {
