@@ -10172,6 +10172,7 @@ GameObject:
   - component: {fileID: 1745723098}
   - component: {fileID: 1745723096}
   - component: {fileID: 1745723095}
+  - component: {fileID: 1745723099}
   m_Layer: 0
   m_Name: FlameEffect
   m_TagString: Untagged
@@ -14927,6 +14928,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_KeyGo: {fileID: 912980078}
+--- !u!65 &1745723099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745723094}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.39, y: 7.390002, z: 16.390003}
+  m_Center: {x: 0, y: 7.1054274e-14, z: 5.000001}
 --- !u!1 &1803885353
 GameObject:
   m_ObjectHideFlags: 0
