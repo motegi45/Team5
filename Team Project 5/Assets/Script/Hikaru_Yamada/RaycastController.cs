@@ -84,14 +84,25 @@ public class RaycastController : MonoBehaviour
     [SerializeField] GameObject stoneTransform2;
     void Start()
     {
+        /*Debug.Log(SceneSaverCh.GetDiary());
+        Debug.Log(SceneSaverCh.GetDoorOpen());
+        Debug.Log(SceneSaverCh.GetKey());
+        Debug.Log(SceneSaverCh.GetLight());
+        Debug.Log(SceneSaverCh.GetCP());*/
+        if(SceneSaverCh.doa)
+        {
+            var door1Anim = Door1.GetComponent<Animation>();
+            door1Anim.Play();
+        }
+        
         script = itemBar.GetComponent<ItemBar>();
         cameraMovementController = cameraObject.GetComponent<CameraMovementController>();
-
         sceneSaverCh = cameraObject.GetComponent<SceneSaverCh>();
         //opensystem = gamemanajer.GetComponent<opensystem>();
         if (Panel)
         {
             Panel.SetActive(false);
+
         }
 
         if (CookingRoomObject)
@@ -308,7 +319,6 @@ public class RaycastController : MonoBehaviour
                         var ItemBarScript = itemBar.GetComponent<ItemBar>();
                         ItemBarScript.DeleteItem();
                         door1Anim.Play();
-                        //Invoke("ButtonSyutugen", 3f);
                         SceneSaverCh.doa = true;
                     }
                 }
@@ -361,15 +371,7 @@ public class RaycastController : MonoBehaviour
                         cameraMovementController.Zoom(zoomPoint);
                     }
                 }
-                /*if (hit.collider.tag == "reFirstDoor")
-                {
-                    Scenechange(firstRoom);
-                }
-
-                if (hit.collider.tag == "enterDoor")
-                {
-                    Scenechange(enterRoom);
-                }*/
+                
                 if (hit.collider.name == "EnterDoor")
                 {
                     if (!SceneSaverCh.EnterCrea())

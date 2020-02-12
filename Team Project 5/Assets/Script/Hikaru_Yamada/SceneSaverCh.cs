@@ -17,7 +17,8 @@ public class SceneSaverCh : MonoBehaviour
     ///<summary>カメラ</summary>
     [SerializeField] public GameObject mainCamera;
     /// <summary>プレイヤーの位置情報</summary>
-    public static Transform cameraLastTransform;
+    public static Vector3 cameraLastPosition;
+    public static Quaternion cameraLastRotation;
     /// <summary>牢屋のドアの開き情報</summary>
     public static bool doa;
     /// <summary>クッキングルームをクリアしたか</summary>
@@ -55,7 +56,8 @@ public class SceneSaverCh : MonoBehaviour
     //シーン以降直前に保存しておく
     public void SceneSave()
     {
-        cameraLastTransform = mainCamera.transform;
+        cameraLastPosition = mainCamera.transform.position;
+        cameraLastRotation = mainCamera.transform.rotation;
         itemBar = itemBarObject.GetComponent<ItemBar>();
         int i = 0;
         while (i < 8)
@@ -76,9 +78,14 @@ public class SceneSaverCh : MonoBehaviour
         key = true;
     }
 
-    public static Transform GetCP()
+    public static Vector3 GetCP()
     {
-        return cameraLastTransform;
+        return cameraLastPosition;
+    }
+
+    public static Quaternion GetCR()
+    {
+        return cameraLastRotation;
     }
 
     public static bool GetDiary()
