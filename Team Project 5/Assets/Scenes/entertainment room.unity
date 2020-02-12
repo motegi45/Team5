@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 88093841}
   - component: {fileID: 88093840}
   m_Layer: 0
-  m_Name: StoneSlab
+  m_Name: "1\u3064\u76EE\u306E\u77F3\u677F"
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
