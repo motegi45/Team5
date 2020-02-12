@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 88093841}
   - component: {fileID: 88093840}
   m_Layer: 0
-  m_Name: "1\u3064\u76EE\u306E\u77F3\u677F"
+  m_Name: StoneSlab
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3006,11 +3006,11 @@ PrefabInstance:
       propertyPath: m_PlayAutomatically
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+    - target: {fileID: 100004, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_TagString
       value: reFirstDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
+    - target: {fileID: 100002, guid: ee86d3c09bbc0e245b6c99cd6992858f, type: 3}
       propertyPath: m_TagString
       value: reFirstDoor
       objectReference: {fileID: 0}
@@ -3800,16 +3800,6 @@ PrefabInstance:
       propertyPath: m_PlayAutomatically
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1150005055324122213, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698,
-        type: 3}
-      propertyPath: Open
-      value: 
-      objectReference: {fileID: 808294024}
-    - target: {fileID: 1150005055324122213, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698,
-        type: 3}
-      propertyPath: Door
-      value: 
-      objectReference: {fileID: 808294023}
     - target: {fileID: 1150005054407081421, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698,
         type: 3}
       propertyPath: m_Mesh
@@ -3950,6 +3940,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1011330177}
+    - target: {fileID: 1150005055324122213, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698,
+        type: 3}
+      propertyPath: Open
+      value: 
+      objectReference: {fileID: 808294024}
+    - target: {fileID: 1150005055324122213, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698,
+        type: 3}
+      propertyPath: Door
+      value: 
+      objectReference: {fileID: 808294023}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbbd79bd2fe18c4d8126cc84ce8e698, type: 3}
 --- !u!1 &438072142
@@ -10618,16 +10618,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 838924366466208655, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 838924366727526957, guid: 5f878962034c59d469bdfa7b5b314c52,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 838924366976050711, guid: 5f878962034c59d469bdfa7b5b314c52,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -10669,6 +10659,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366466208655, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 838924366727526957, guid: 5f878962034c59d469bdfa7b5b314c52,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f878962034c59d469bdfa7b5b314c52, type: 3}
