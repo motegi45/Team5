@@ -224,12 +224,12 @@ public class RaycastController : MonoBehaviour
                         itemObject.transform.localScale = new Vector3(100, 100, 100);
                         itemObject.transform.Rotate(new Vector3(180, -90, 0));
                     }
-                    else if (itemObject.name == "HintPlane")
+                    else if (itemObject.name == "②と書かれた紙")
                     {
                         itemObject.transform.localScale = new Vector3(6, 1, 6);
                         itemObject.transform.Rotate(new Vector3(-90, 0, 0));
                     }
-                    else if (itemObject.name == "HintPlane (1)")
+                    else if (itemObject.name == "⑤と書かれた紙")
                     {
                         itemObject.transform.localScale = new Vector3(6, 1, 6);
                         itemObject.transform.Rotate(new Vector3(-90, 0, 0));
